@@ -11,7 +11,7 @@ namespace MusicStore.Logic.Artists
 
         public virtual IList<Album> Albums { get; protected set; }
 
-        private Artist()
+        protected Artist()
         {
         }
 
