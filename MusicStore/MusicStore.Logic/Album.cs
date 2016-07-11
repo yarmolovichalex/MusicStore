@@ -8,6 +8,8 @@ namespace MusicStore.Logic
 
         public virtual Artist Artist { get; }
 
+        public int Year { get; protected set; }
+
         protected virtual IList<Track> Tracks { get; } = new List<Track>();
     }
 }
