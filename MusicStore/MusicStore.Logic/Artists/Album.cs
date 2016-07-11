@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using MusicStore.Logic.Common;
 
-namespace MusicStore.Logic
+namespace MusicStore.Logic.Artists
 {
     public class Album : Entity
     {

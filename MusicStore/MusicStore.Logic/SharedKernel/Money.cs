@@ -1,4 +1,6 @@
-﻿namespace MusicStore.Logic
+﻿using MusicStore.Logic.Common;
+
+namespace MusicStore.Logic.SharedKernel
 {
     public class Money : ValueObject<Money>
     {

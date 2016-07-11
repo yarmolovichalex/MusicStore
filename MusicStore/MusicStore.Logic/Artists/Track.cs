@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MusicStore.Logic
+namespace MusicStore.Logic.Artists
 {
     public class Track
     {
