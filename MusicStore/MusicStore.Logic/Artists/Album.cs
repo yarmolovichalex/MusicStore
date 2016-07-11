@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MusicStore.Logic.Common;
 using MusicStore.Logic.SharedKernel;
 
@@ -22,6 +23,15 @@ namespace MusicStore.Logic.Artists
 
         public Album(string name, Artist artist, int year, IList<Track> tracks, Money price)
         {
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException();
+            if (Artist == null)
+                throw new InvalidOperationException();
+            if (Year < 1900 || Year > DateTime.Now.Year)
+                throw new InvalidOperationException();
+            if (Tracks == null || Tracks.Count == 0)
+                throw new InvalidOperationException();
+
             Name = name;
             Artist = artist;
             Year = year;

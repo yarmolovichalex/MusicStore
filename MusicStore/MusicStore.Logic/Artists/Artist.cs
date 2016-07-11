@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MusicStore.Logic.Common;
 
 namespace MusicStore.Logic.Artists
@@ -17,6 +18,13 @@ namespace MusicStore.Logic.Artists
 
         public Artist(string name, string country, IList<Album> albums) : this()
         {
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException();
+            if (string.IsNullOrEmpty(country))
+                throw new InvalidOperationException();
+            if (albums == null || albums.Count == 0)
+                throw new InvalidOperationException();
+
             Name = name;
             Country = country;
             Albums = albums;

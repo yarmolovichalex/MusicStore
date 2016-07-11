@@ -1,4 +1,5 @@
-﻿using MusicStore.Logic.Common;
+﻿using System;
+using MusicStore.Logic.Common;
 
 namespace MusicStore.Logic.SharedKernel
 {
@@ -13,6 +14,11 @@ namespace MusicStore.Logic.SharedKernel
 
         public Money(decimal amount, string currency)
         {
+            if (amount < 0)
+                throw new InvalidOperationException();
+            if (string.IsNullOrEmpty(currency))
+                throw new InvalidOperationException();
+
             Amount = amount;
             Currency = currency;
         }
