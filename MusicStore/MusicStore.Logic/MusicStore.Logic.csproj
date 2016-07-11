@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Artists\Album.cs" />
     <Compile Include="Artists\Artist.cs" />
+    <Compile Include="Artists\ArtistRepository.cs" />
     <Compile Include="Common\Repository.cs" />
     <Compile Include="Common\Entity.cs" />
     <Compile Include="SharedKernel\Money.cs" />

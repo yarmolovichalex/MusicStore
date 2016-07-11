@@ -7,6 +7,19 @@ namespace MusicStore.Logic.Artists
     {
         public virtual string Name { get; protected set; }
 
-        protected virtual IList<Album> Albums { get; } = new List<Album>();
+        public virtual string Country { get; protected set; }
+
+        public virtual IList<Album> Albums { get; protected set; }
+
+        private Artist()
+        {
+        }
+
+        public Artist(string name, string country, IList<Album> albums) : this()
+        {
+            Name = name;
+            Country = country;
+            Albums = albums;
+        }
     }
 }
