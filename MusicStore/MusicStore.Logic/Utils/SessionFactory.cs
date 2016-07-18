@@ -6,6 +6,7 @@ using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Helpers;
 using FluentNHibernate.Conventions.Instances;
 using NHibernate;
+using NHibernate.Tool.hbm2ddl;
 
 namespace MusicStore.Logic.Utils
 {
@@ -35,7 +36,7 @@ namespace MusicStore.Logic.Utils
                             .When(criteria => criteria.Expect(x => x.Nullable, Is.Not.Set), x => x.Not.Nullable()))
                     .Conventions.Add<TableNameConvention>()
                     .Conventions.Add<GuidCombConvention>()
-                );
+                ).ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
 
             return configuration.BuildSessionFactory();
         }

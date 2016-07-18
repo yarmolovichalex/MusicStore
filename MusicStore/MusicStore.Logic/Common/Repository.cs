@@ -1,11 +1,12 @@
-﻿using MusicStore.Logic.Utils;
+﻿using System;
+using MusicStore.Logic.Utils;
 using NHibernate;
 
 namespace MusicStore.Logic.Common
 {
     public abstract class Repository<T>
     {
-        public T GetById(long id)
+        public T GetById(Guid id)
         {
             using (ISession session = SessionFactory.OpenSession())
             {

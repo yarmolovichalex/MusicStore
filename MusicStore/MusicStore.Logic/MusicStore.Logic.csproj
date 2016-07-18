@@ -63,6 +63,7 @@
     <Compile Include="SharedKernel\Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Artists\Track.cs" />
+    <Compile Include="Utils\Initer.cs" />
     <Compile Include="Utils\SessionFactory.cs" />
     <Compile Include="Common\ValueObject.cs" />
   </ItemGroup>
