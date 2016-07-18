@@ -1,8 +1,9 @@
 ﻿using System;
+using MusicStore.Logic.Common;
 
 namespace MusicStore.Logic.Artists
 {
-    public class Track
+    public class Track : Entity
     {
         public virtual string Name { get; protected set; }
 
