@@ -1,7 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Web.Mvc;
-using MusicStore.Logic.Utils;
+﻿using System.Web.Mvc;
 
 namespace MusicStore.Web.Controllers
 {
@@ -10,8 +7,6 @@ namespace MusicStore.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            Initer.Init(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
-
             return View();
         }
     }
