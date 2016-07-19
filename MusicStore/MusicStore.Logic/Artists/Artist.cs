@@ -10,24 +10,22 @@ namespace MusicStore.Logic.Artists
 
         public virtual string Country { get; protected set; }
 
-        public virtual IList<Album> Albums { get; protected set; }
+        public virtual IList<Album> Albums { get; }
 
         protected Artist()
         {
         }
 
-        public Artist(string name, string country, IList<Album> albums) : this()
+        public Artist(string name, string country) : this()
         {
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
             if (string.IsNullOrEmpty(country))
                 throw new InvalidOperationException();
-            if (albums == null || albums.Count == 0)
-                throw new InvalidOperationException();
 
             Name = name;
             Country = country;
-            Albums = albums;
+            Albums = new List<Album>();
         }
     }
 }

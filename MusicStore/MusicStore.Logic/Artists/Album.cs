@@ -13,15 +13,15 @@ namespace MusicStore.Logic.Artists
 
         public virtual int Year { get; protected set; }
 
-        public virtual IList<Track> Tracks { get; protected set; }
-
         public virtual Money Price { get; protected set; }
+
+        public virtual IList<Track> Tracks { get; }
 
         protected Album()
         {
         }
 
-        public Album(string name, Artist artist, int year, IList<Track> tracks, Money price)
+        public Album(string name, Artist artist, int year, Money price)
         {
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
@@ -29,14 +29,12 @@ namespace MusicStore.Logic.Artists
                 throw new InvalidOperationException();
             if (Year < 1900 || Year > DateTime.Now.Year)
                 throw new InvalidOperationException();
-            if (Tracks == null || Tracks.Count == 0)
-                throw new InvalidOperationException();
 
             Name = name;
             Artist = artist;
             Year = year;
-            Tracks = tracks;
             Price = price;
+            Tracks = new List<Track>();
         }
     }
 }

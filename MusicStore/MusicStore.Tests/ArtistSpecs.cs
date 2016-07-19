@@ -11,12 +11,12 @@ namespace MusicStore.Tests
     {
         private Artist GetFakeArtist()
         {
-            return new Artist("Metallica", "USA", new List<Album> { null });
+            return new Artist("Metallica", "USA");
         }
 
         private Album GetFakeAlbum()
         {
-            return new Album("Metallica", GetFakeArtist(), 1991, GetFakeTrackList(), null);
+            return new Album("Metallica", GetFakeArtist(), 1991, null);
         }
 
         private List<Track> GetFakeTrackList()
@@ -32,7 +32,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_artist_without_name()
         {
-            Action action = () => new Artist(string.Empty, "USA", GetFakeAlbumList());
+            Action action = () => new Artist(string.Empty, "USA");
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -40,23 +40,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_artist_without_country()
         {
-            Action action = () => new Artist("Metallica", string.Empty, GetFakeAlbumList());
-
-            action.ShouldThrow<InvalidOperationException>();
-        }
-
-        [Fact]
-        public void Cant_create_artist_without_albums()
-        {
-            Action action = () => new Artist("Metallica", "USA", null);
-
-            action.ShouldThrow<InvalidOperationException>();
-        }
-
-        [Fact]
-        public void Cant_create_artist_with_zero_albums()
-        {
-            Action action = () => new Artist("Metallica", "USA", new List<Album>());
+            Action action = () => new Artist("Metallica", string.Empty);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -64,7 +48,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_album_without_name()
         {
-            Action action =() => new Album(string.Empty, GetFakeArtist(), 1991, GetFakeTrackList(), null);
+            Action action =() => new Album(string.Empty, GetFakeArtist(), 1991, null);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -72,7 +56,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_album_without_artist()
         {
-            Action action = () => new Album("Master of Puppets", null, 1991, GetFakeTrackList(), null);
+            Action action = () => new Album("Master of Puppets", null, 1991, null);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -80,23 +64,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_album_with_wrong_year()
         {
-            Action action = () => new Album("Master of Puppets", GetFakeArtist(), 200, GetFakeTrackList(), null);
-
-            action.ShouldThrow<InvalidOperationException>();
-        }
-
-        [Fact]
-        public void Cant_create_album_without_tracklist()
-        {
-            Action action =() => new Album("Master of Puppets", GetFakeArtist(), 200, null, null);
-
-            action.ShouldThrow<InvalidOperationException>();
-        }
-
-        [Fact]
-        public void Cant_create_album_with_zero_tracks()
-        {
-            Action action =() => new Album("Master of Puppets", GetFakeArtist(), 200, new List<Track>(), null);
+            Action action = () => new Album("Master of Puppets", GetFakeArtist(), 200,  null);
 
             action.ShouldThrow<InvalidOperationException>();
         }
