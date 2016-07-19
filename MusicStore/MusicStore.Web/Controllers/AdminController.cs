@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using MusicStore.Web.ViewModels;
 
 namespace MusicStore.Web.Controllers
 {
@@ -11,19 +12,19 @@ namespace MusicStore.Web.Controllers
         }
 
         [HttpPost]
-        public void AddArtist()
+        public void AddArtist(ArtistVm model)
         {
             
         }
 
         [HttpPost]
-        public void AddAlbum()
+        public void AddAlbum(AlbumVm model)
         {
 
         }
 
         [HttpPost]
-        public void AddTrack()
+        public void AddTrack(TrackVm model)
         {
             
         }

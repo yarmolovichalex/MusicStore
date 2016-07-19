@@ -1,0 +1,9 @@
+{
+  "name": "music-store",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-bootstrap-npm": "^0.14.3",
+    "bootstrap": "^3.3.6"
+  }
+}
