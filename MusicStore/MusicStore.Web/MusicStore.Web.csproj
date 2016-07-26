@@ -90,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Controllers\AdminController.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +125,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicStore.Logic\MusicStore.Logic.csproj">

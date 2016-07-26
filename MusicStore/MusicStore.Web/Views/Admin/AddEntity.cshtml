@@ -2,16 +2,17 @@
     ViewBag.Title = "Admin";
 }
 
-<h3>Add artist:</h3>
-@using (Html.BeginForm("AddArtist", "Admin", FormMethod.Post))
-{
-    <fieldset class="form-group">
-        <label for="artistName">Name</label>
-        <input id="artistName" name="name" class="form-control"/>
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="artistCountry">Country</label>
-        <input id="artistCountry" name="country" class="form-control"/>
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
-}
+<div ng-controller="AdminController">
+    <h3>Add artist:</h3>
+    <form name="addArtistForm" ng-submit="submit()">
+        <fieldset class="form-group">
+            <label for="artistName">Name</label>
+            <input id="artistName" name="name" ng-model="name" class="form-control" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="artistCountry">Country</label>
+            <input id="artistCountry" name="country" ng-model="country" class="form-control" />
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
