@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using FluentAssertions;
 using MusicStore.Logic.Artists;
 using MusicStore.Logic.SharedKernel;
@@ -17,16 +16,6 @@ namespace MusicStore.Tests
         private Album GetFakeAlbum()
         {
             return new Album("Metallica", GetFakeArtist(), 1991, null);
-        }
-
-        private List<Track> GetFakeTrackList()
-        {
-            return new List<Track> { null };
-        }
-
-        private List<Album> GetFakeAlbumList()
-        {
-            return new List<Album> { null };
         }
 
         [Fact]

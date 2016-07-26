@@ -4,7 +4,7 @@ using NHibernate;
 
 namespace MusicStore.Logic.Common
 {
-    public abstract class Repository<T>
+    public abstract class Repository<T> : IRepository<T>
     {
         public T GetById(Guid id)
         {
