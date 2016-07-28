@@ -25,9 +25,9 @@ namespace MusicStore.Logic.Artists
         {
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
-            if (Artist == null)
+            if (artist == null)
                 throw new InvalidOperationException();
-            if (Year < 1900 || Year > DateTime.Now.Year)
+            if (year < 1900 || year > DateTime.Now.Year)
                 throw new InvalidOperationException();
 
             Name = name;

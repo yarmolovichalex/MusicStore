@@ -7,10 +7,12 @@ namespace MusicStore.Web.Controllers
     public class AdminController : Controller
     {
         private readonly IArtistRepository _artistRepository;
+        private readonly IAlbumRepository _albumRepository;
 
         public AdminController()
         {
             _artistRepository = new ArtistRepository();
+            _albumRepository = new AlbumRepository();
         }
 
         [HttpGet]
@@ -29,7 +31,9 @@ namespace MusicStore.Web.Controllers
         [HttpPost]
         public void AddAlbum(AlbumVm model)
         {
-
+            var artist = _artistRepository.GetByName(model.ArtistName);
+            var album = new Album(model.Name, artist, model.Year, null); // TODO add Price
+            _albumRepository.Save(album);
         }
 
         [HttpPost]

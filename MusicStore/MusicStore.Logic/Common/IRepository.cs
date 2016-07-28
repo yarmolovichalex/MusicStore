@@ -5,6 +5,6 @@ namespace MusicStore.Logic.Common
     public interface IRepository<T>
     {
         T GetById(Guid id);
-        void Save(T aggregateRoot);
+        void Save(T entity);
     }
 }

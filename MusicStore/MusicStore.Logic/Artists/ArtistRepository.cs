@@ -1,8 +1,19 @@
-﻿using MusicStore.Logic.Common;
+﻿using System.Linq;
+using MusicStore.Logic.Common;
+using MusicStore.Logic.Utils;
+using NHibernate;
+using NHibernate.Linq;
 
 namespace MusicStore.Logic.Artists
 {
     public class ArtistRepository : Repository<Artist>, IArtistRepository
     {
+        public Artist GetByName(string name)
+        {
+            using (ISession session = SessionFactory.OpenSession())
+            {
+                return session.Query<Artist>().FirstOrDefault(x => x.Name == name);
+            }
+        }
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="Artists\Artist.cs" />
     <Compile Include="Artists\ArtistMap.cs" />
     <Compile Include="Artists\ArtistRepository.cs" />
+    <Compile Include="Artists\IAlbumRepository.cs" />
     <Compile Include="Artists\IArtistRepository.cs" />
     <Compile Include="Artists\TrackMap.cs" />
     <Compile Include="Artists\TrackRepository.cs" />

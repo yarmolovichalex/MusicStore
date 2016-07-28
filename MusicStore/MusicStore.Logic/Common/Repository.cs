@@ -14,12 +14,12 @@ namespace MusicStore.Logic.Common
             }
         }
 
-        public void Save(T aggregateRoot)
+        public void Save(T entity)
         {
             using (ISession session = SessionFactory.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.SaveOrUpdate(aggregateRoot);
+                session.SaveOrUpdate(entity);
                 transaction.Commit();
             }
         }

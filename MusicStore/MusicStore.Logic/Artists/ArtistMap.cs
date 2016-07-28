@@ -6,9 +6,9 @@ namespace MusicStore.Logic.Artists
     {
         public ArtistMap()
         {
-            Id(x => x.Id);
-            Map(x => x.Name).Unique();
-            Map(x => x.Country);
+            Id(x => x.Id).Not.Nullable();
+            Map(x => x.Name).Unique().Not.Nullable();
+            Map(x => x.Country).Nullable();
 
             HasMany(x => x.Albums).Cascade.SaveUpdate().Inverse();
         }
