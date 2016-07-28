@@ -7,15 +7,15 @@ namespace MusicStore.Logic.Artists
         public AlbumMap()
         {
             Id(x => x.Id);
-            Map(x => x.Name).Not.Nullable();
-            Map(x => x.Year).Nullable();
+            Map(x => x.Name);
+            Map(x => x.Year);
 
-            References(x => x.Artist).Not.Nullable();
+            References(x => x.Artist);
 
             Component(x => x.Price, y =>
             {
-                y.Map(x => x.Amount).Nullable();
-                y.Map(x => x.Currency).Nullable();
+                y.Map(x => x.Amount);
+                y.Map(x => x.Currency);
             });
 
             HasMany(x => x.Tracks).Cascade.SaveUpdate().Inverse();

@@ -4,6 +4,7 @@ using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Helpers;
+using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Conventions.Instances;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
@@ -30,12 +31,11 @@ namespace MusicStore.Logic.Utils
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString))
                 .Mappings(m => m.FluentMappings
                     .AddFromAssembly(Assembly.GetExecutingAssembly())
-                    .Conventions.Add(
-                        ForeignKey.EndsWith("ID"),
-                        ConventionBuilder.Property
-                            .When(criteria => criteria.Expect(x => x.Nullable, Is.Not.Set), x => x.Not.Nullable()))
+                    .Conventions.Add(ForeignKey.EndsWith("ID"))
                     .Conventions.Add<TableNameConvention>()
                     .Conventions.Add<GuidCombConvention>()
+                    .Conventions.Add<ColumnNullabilityConvention>()
+                    .Conventions.Add<ReferenceNullabilityConvention>()
                 ).ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
 
             return configuration.BuildSessionFactory();
@@ -55,6 +55,32 @@ namespace MusicStore.Logic.Utils
             {
                 instance.Column(instance.EntityType.Name + "ID");
                 instance.GeneratedBy.GuidComb();
+            }
+        }
+
+        public class ColumnNullabilityConvention : IPropertyConvention, IPropertyConventionAcceptance
+        {
+            public void Accept(IAcceptanceCriteria<IPropertyInspector> criteria)
+            {
+                criteria.Expect(x => x.Nullable, Is.Not.Set);
+            }
+
+            public void Apply(IPropertyInstance instance)
+            {
+                instance.Not.Nullable();
+            }
+        }
+
+        public class ReferenceNullabilityConvention : IReferenceConvention, IPropertyConventionAcceptance
+        {
+            public void Accept(IAcceptanceCriteria<IPropertyInspector> criteria)
+            {
+                criteria.Expect(x => x.Nullable, Is.Not.Set);
+            }
+
+            public void Apply(IManyToOneInstance instance)
+            {
+                instance.Not.Nullable();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace MusicStore.Logic.Artists
         {
             Id(x => x.Id);
             Map(x => x.Name);
-            Map(x => x.Duration);
+            Map(x => x.Duration).Nullable();
 
             References(x => x.Album);
         }
