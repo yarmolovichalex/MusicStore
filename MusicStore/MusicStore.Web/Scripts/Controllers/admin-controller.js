@@ -1,7 +1,7 @@
 ﻿angular
     .module('musicStoreApp')
     .controller('AdminController', [
-        '$scope', '$http', function($scope, $http) {
+        '$scope', '$http', '$location', function($scope, $http, $location) {
 
             $scope.saveArtist = function() {
                 $http.post('/musicstore/admin/addartist', {
@@ -17,5 +17,34 @@
                     Year: $scope.albumYear
                 });
             }
+
+            $scope.changeTab = function (tab) {
+                $scope.selectedTab = tab;
+                switch ($scope.selectedTab) {
+                    case 'Artist':
+                        $location.path('/artist');
+                        break;
+                    case 'Album':
+                        $location.path('/album');
+                        break;
+                    default:
+                        $location.path('/artist');
+                }
+            }
+
+            $scope.$watch(function () {
+                return $location.path();
+            }, function (value) {
+                switch (value) {
+                    case '/artist':
+                        $scope.selectedTab = 'Artist';
+                        break;
+                    case '/album':
+                        $scope.selectedTab = 'Album';
+                        break;
+                    default:
+                        $scope.selectedTab = 'Artist';
+                }
+            });
         }
     ]);

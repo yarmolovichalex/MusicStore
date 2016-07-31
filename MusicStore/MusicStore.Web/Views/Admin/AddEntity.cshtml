@@ -2,9 +2,17 @@
     ViewBag.Title = "Admin";
 }
 
-<div ng-controller="AdminController">
-    <a href="#artist">Add artist</a>
-    <a href="#album">Add album</a>
+<div default-route="/artist">
+    <div ng-controller="AdminController">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': selectedTab === 'Artist'}">
+                <a ng-click="changeTab('Artist')">Add artist</a>
+            </li>
+            <li ng-class="{'active': selectedTab === 'Album'}">
+                <a ng-click="changeTab('Album')">Add album</a>
+            </li>
+        </ul>
 
-    <div ng-view></div>
+        <div ng-view></div>
+    </div>
 </div>

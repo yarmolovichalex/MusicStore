@@ -89,9 +89,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers\admin-controller.js" />
+    <Content Include="Scripts\directives\default-route.js" />
     <Content Include="Scripts\templates\add-album.html" />
     <Content Include="Scripts\templates\add-artist.html" />
     <Content Include="Web.config" />
@@ -127,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicStore.Logic\MusicStore.Logic.csproj">

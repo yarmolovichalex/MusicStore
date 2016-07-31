@@ -2,11 +2,6 @@
     .config([
         '$routeProvider', function($routeProvider) {
             $routeProvider
-                .when('/', {
-                    templateUrl: '../scripts/templates/add-artist.html',
-                    controller: 'AdminController',
-                    controllerAs: 'ctrl'
-                })
                 .when('/artist', {
                     templateUrl: '../scripts/templates/add-artist.html',
                     controller: 'AdminController',
@@ -16,6 +11,7 @@
                     templateUrl: '../scripts/templates/add-album.html',
                     controller: 'AdminController',
                     controllerAs: 'ctrl'
-                });
+                })
+                .otherwise({ redirectTo: '/artist' });
         }
     ]);
