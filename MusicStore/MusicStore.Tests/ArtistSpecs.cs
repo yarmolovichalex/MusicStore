@@ -59,9 +59,17 @@ namespace MusicStore.Tests
         }
 
         [Fact]
+        public void Cant_create_track_without_number()
+        {
+            Action action = () => new Track(0, "Enter Sandman", GetFakeAlbum(), TimeSpan.FromMinutes(5));
+
+            action.ShouldThrow<InvalidOperationException>();
+        }
+
+        [Fact]
         public void Cant_create_track_without_name()
         {
-            Action action = () => new Track(string.Empty, GetFakeAlbum(), TimeSpan.FromMinutes(5) );
+            Action action = () => new Track(1, string.Empty, GetFakeAlbum(), TimeSpan.FromMinutes(5) );
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -69,7 +77,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_track_without_album()
         {
-            Action action = () => new Track("Enter Sandman", null, TimeSpan.FromMinutes(5));
+            Action action = () => new Track(1, "Enter Sandman", null, TimeSpan.FromMinutes(5));
 
             action.ShouldThrow<InvalidOperationException>();
         }

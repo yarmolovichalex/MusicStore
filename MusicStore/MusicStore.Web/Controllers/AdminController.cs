@@ -9,9 +9,11 @@ namespace MusicStore.Web.Controllers
     {
         private readonly IArtistRepository _artistRepository;
         private readonly IAlbumRepository _albumRepository;
+        private readonly ITrackRepository _trackRepository;
 
         public AdminController()
         {
+            _trackRepository = new TrackRepository();
             _artistRepository = new ArtistRepository();
             _albumRepository = new AlbumRepository();
         }

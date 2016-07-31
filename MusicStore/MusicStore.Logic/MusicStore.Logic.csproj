@@ -60,6 +60,7 @@
     <Compile Include="Artists\ArtistRepository.cs" />
     <Compile Include="Artists\IAlbumRepository.cs" />
     <Compile Include="Artists\IArtistRepository.cs" />
+    <Compile Include="Artists\ITrackRepository.cs" />
     <Compile Include="Artists\TrackMap.cs" />
     <Compile Include="Artists\TrackRepository.cs" />
     <Compile Include="Common\IRepository.cs" />

@@ -5,6 +5,8 @@ namespace MusicStore.Logic.Artists
 {
     public class Track : Entity
     {
+        public virtual int Number { get; protected set; }
+
         public virtual string Name { get; protected set; }
 
         public virtual Album Album { get; protected set; }
@@ -15,8 +17,10 @@ namespace MusicStore.Logic.Artists
         {
         }
 
-        public Track(string name, Album album, TimeSpan duration)
+        public Track(int number, string name, Album album, TimeSpan duration)
         {
+            if (number < 1)
+                throw new InvalidOperationException();
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
             if (Album == null)

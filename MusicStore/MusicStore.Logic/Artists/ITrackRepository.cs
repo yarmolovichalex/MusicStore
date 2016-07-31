@@ -2,7 +2,7 @@
 
 namespace MusicStore.Logic.Artists
 {
-    public class TrackRepository : Repository<Track>, ITrackRepository
+    public interface ITrackRepository : IRepository<Track>
     {
     }
 }
