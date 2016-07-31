@@ -8,9 +8,11 @@ namespace MusicStore.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IArtistRepository _artistRepository;
+        private readonly IAlbumRepository _albumRepository;
 
         public HomeController()
         {
+            _albumRepository = new AlbumRepository();
             _artistRepository = new ArtistRepository();
         }
 
@@ -28,6 +30,23 @@ namespace MusicStore.Web.Controllers
             {
                 Name = x.Name,
                 Country = x.Country
+            }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetAlbums()
+        {
+            var data = _albumRepository.GetAll();
+            return Json(data.Select(x => new AlbumVm
+            {
+                Name = x.Name,
+                ArtistName = _artistRepository.GetById(x.Artist.Id).Name, // TODO Optimize
+                Year = x.Year,
+                Price = new MoneyVm
+                {
+                    Amount = x.Price.Amount,
+                    Currency = x.Price.Currency
+                }
             }), JsonRequestBehavior.AllowGet);
         }
     }

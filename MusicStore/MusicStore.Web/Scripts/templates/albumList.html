@@ -1,1 +1,22 @@
-﻿
+﻿<h3>Albums</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Artist</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="album in albums">
+        <tr>
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="album.ArtistName"></td>
+            <td ng-bind="album.Name"></td>
+            <td ng-bind="album.Year"></td>
+            <td ng-bind="album.Price.Amount + album.Price.Currency"></td>
+        </tr>
+    </tbody>
+</table>

@@ -12,7 +12,18 @@
                     });
             }
 
-            getArtists();
+            var getAlbums = function () {
+                $http.get('/musicstore/home/getAlbums')
+                    .then(function (response) {
+                        $scope.albums = response.data;
+                    });
+            }
+
+            if ($scope.selectedTab === 'ArtistList') {
+                getArtists();
+            } else if ($scope.selectedTab === 'AlbumList') {
+                getAlbums();
+            }
 
             $scope.changeTab = function (tab) {
                 $scope.selectedTab = tab;
@@ -42,12 +53,5 @@
                         $scope.selectedTab = 'ArtistList';
                 }
             });
-
-            var getArtists = function() {
-                $http.get('/musicstore/home/getArtists')
-                    .then(function(response) {
-                        $scope.artists = response.data;
-                    });
-            }
         }
     ]);
