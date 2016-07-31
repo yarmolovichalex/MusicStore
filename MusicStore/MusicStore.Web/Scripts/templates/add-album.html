@@ -1,0 +1,16 @@
+﻿<h3>Add album:</h3>
+<form name="addAlbumForm" novalidate>
+    <fieldset class="form-group">
+        <label for="albumName">Name</label>
+        <input id="albumName" name="albumName" ng-model="albumName" class="form-control" />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="albumArtist">Artist</label>
+        <input id="albumArtist" name="albumArtist" ng-model="albumArtist" class="form-control" />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="albumYear">Year</label>
+        <input id="albumYear" name="albumYear" ng-model="albumYear" class="form-control" />
+    </fieldset>
+    <button type="submit" ng-click="saveAlbum()" class="btn btn-primary">Save</button>
+</form>

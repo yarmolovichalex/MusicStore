@@ -91,7 +91,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\Controllers\AdminController.js" />
+    <Content Include="Scripts\controllers\admin-controller.js" />
+    <Content Include="Scripts\templates\add-album.html" />
+    <Content Include="Scripts\templates\add-artist.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

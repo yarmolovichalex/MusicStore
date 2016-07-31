@@ -1,0 +1,12 @@
+﻿<h3>Add artist:</h3>
+<form name="addArtistForm">
+    <fieldset class="form-group">
+        <label for="artistName">Name</label>
+        <input id="artistName" name="artistName" ng-model="artistName" class="form-control" />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="artistCountry">Country</label>
+        <input id="artistCountry" name="artistCountry" ng-model="artistCountry" class="form-control" />
+    </fieldset>
+    <button type="submit" ng-click="saveArtist()" class="btn btn-primary">Save</button>
+</form>
