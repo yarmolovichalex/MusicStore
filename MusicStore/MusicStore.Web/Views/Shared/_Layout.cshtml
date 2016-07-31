@@ -7,9 +7,10 @@
     <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+<div class="container body-content">
+    @Html.Partial("_TopMenu")
+    @RenderBody()
+</div>
 
     <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="~/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
