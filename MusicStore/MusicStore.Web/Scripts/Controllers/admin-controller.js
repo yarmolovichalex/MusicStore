@@ -12,9 +12,13 @@
 
             $scope.saveAlbum = function () {
                 $http.post('/musicstore/admin/addalbum', {
-                    Name: $scope.albumName,
-                    ArtistName: $scope.albumArtist,
-                    Year: $scope.albumYear
+                    Name: $scope.album.name,
+                    ArtistName: $scope.album.artist,
+                    Year: $scope.album.year,
+                    Price: {
+                        Amount: $scope.album.price.amount,
+                        Currency: "USD" // todo DDL for currencies
+                    }
                 });
             }
 

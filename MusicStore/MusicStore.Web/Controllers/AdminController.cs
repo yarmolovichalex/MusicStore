@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using MusicStore.Logic.Artists;
+using MusicStore.Logic.SharedKernel;
 using MusicStore.Web.ViewModels;
 
 namespace MusicStore.Web.Controllers
@@ -32,7 +33,7 @@ namespace MusicStore.Web.Controllers
         public void AddAlbum(AlbumVm model)
         {
             var artist = _artistRepository.GetByName(model.ArtistName);
-            var album = new Album(model.Name, artist, model.Year, null); // TODO add Price
+            var album = new Album(model.Name, artist, model.Year, new Money(model.Price.Amount, model.Price.Currency));
             _albumRepository.Save(album);
         }
 
