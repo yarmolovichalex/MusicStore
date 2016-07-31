@@ -1,1 +1,18 @@
-﻿
+﻿<h3>Artists</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="artist in artists">
+    <tr>
+        <td ng-bind="$index + 1"></td>
+        <td ng-bind="artist.Name"></td>
+        <td ng-bind="artist.Country"></td>
+    </tr>
+    </tbody>
+</table>

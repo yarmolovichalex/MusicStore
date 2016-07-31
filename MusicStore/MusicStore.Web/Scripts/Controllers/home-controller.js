@@ -3,6 +3,17 @@
     .controller('HomeController', [
         '$scope', '$http', '$location', function ($scope, $http, $location) {
 
+            $scope.artists = {};
+
+            var getArtists = function () {
+                $http.get('/musicstore/home/getArtists')
+                    .then(function (response) {
+                        $scope.artists = response.data;
+                    });
+            }
+
+            getArtists();
+
             $scope.changeTab = function (tab) {
                 $scope.selectedTab = tab;
                 switch ($scope.selectedTab) {
@@ -31,5 +42,12 @@
                         $scope.selectedTab = 'ArtistList';
                 }
             });
+
+            var getArtists = function() {
+                $http.get('/musicstore/home/getArtists')
+                    .then(function(response) {
+                        $scope.artists = response.data;
+                    });
+            }
         }
     ]);
