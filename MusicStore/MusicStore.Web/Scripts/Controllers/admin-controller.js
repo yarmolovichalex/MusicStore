@@ -5,8 +5,8 @@
 
             $scope.saveArtist = function() {
                 $http.post('/musicstore/admin/addartist', {
-                    Name: $scope.artistName,
-                    Country: $scope.artistCountry
+                    Name: $scope.artist.name,
+                    Country: $scope.artist.country
                 });
             }
 
