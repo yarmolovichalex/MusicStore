@@ -93,9 +93,12 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers\admin-controller.js" />
+    <Content Include="Scripts\controllers\home-controller.js" />
     <Content Include="Scripts\directives\default-route.js" />
-    <Content Include="Scripts\templates\add-album.html" />
-    <Content Include="Scripts\templates\add-artist.html" />
+    <Content Include="Scripts\templates\album.html" />
+    <Content Include="Scripts\templates\artist.html" />
+    <Content Include="Scripts\templates\artistList.html" />
+    <Content Include="Scripts\templates\albumList.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +117,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Admin\AddEntity.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

@@ -2,16 +2,26 @@
     .config([
         '$routeProvider', function($routeProvider) {
             $routeProvider
+                .when('/artistList', {
+                    templateUrl: '../scripts/templates/artistList.html',
+                    controller: 'HomeController',
+                    controllerAs: 'ctrl'
+                })
+                .when('/albumList', {
+                    templateUrl: '../scripts/templates/albumList.html',
+                    controller: 'HomeController',
+                    controllerAs: 'ctrl'
+                })
                 .when('/artist', {
-                    templateUrl: '../scripts/templates/add-artist.html',
+                    templateUrl: '../scripts/templates/artist.html',
                     controller: 'AdminController',
                     controllerAs: 'ctrl'
                 })
                 .when('/album', {
-                    templateUrl: '../scripts/templates/add-album.html',
+                    templateUrl: '../scripts/templates/album.html',
                     controller: 'AdminController',
                     controllerAs: 'ctrl'
                 })
-                .otherwise({ redirectTo: '/artist' });
+                .otherwise({ redirectTo: '/404.html' });
         }
     ]);

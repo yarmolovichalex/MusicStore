@@ -5,7 +5,7 @@ namespace MusicStore.Web.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult List()
         {
             return View();
         }

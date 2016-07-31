@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div default-route="/artistList">
+    <div ng-controller="HomeController">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': selectedTab === 'ArtistList'}">
+                <a ng-click="changeTab('ArtistList')">Artists</a>
+            </li>
+            <li ng-class="{'active': selectedTab === 'AlbumList'}">
+                <a ng-click="changeTab('AlbumList')">Albums</a>
+            </li>
+        </ul>
+
+        <div ng-view></div>
+    </div>
+</div>
