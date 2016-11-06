@@ -10,7 +10,7 @@ namespace MusicStore.Logic.Business
 
         public ArtistService(IArtistRepository artistRepository)
         {
-            _artistRepository = new ArtistRepository();
+            _artistRepository = artistRepository;
         }
 
         public void AddAlbum(AddAlbumDTO dto)
@@ -21,6 +21,11 @@ namespace MusicStore.Logic.Business
                 _artistRepository.AddAlbum(artist.Id,
                     new Album(dto.Name, artist, dto.Year.Value, new Money(dto.Price.Amount ?? 0m, dto.Price.Currency)));
             }
+        }
+
+        public void Save(Artist artist)
+        {
+            _artistRepository.Save(artist);
         }
     }
 }

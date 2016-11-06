@@ -3,26 +3,17 @@ using MusicStore.Logic.Artists;
 using MusicStore.Logic.Business;
 using MusicStore.Logic.DTOs.Album;
 using MusicStore.Logic.DTOs.Money;
-using MusicStore.Logic.SharedKernel;
 using MusicStore.Web.ViewModels;
 
 namespace MusicStore.Web.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IArtistRepository _artistRepository;
-        private readonly IAlbumRepository _albumRepository;
-        private readonly ITrackRepository _trackRepository;
-
         private readonly IArtistService _artistService;
 
-        public AdminController()
+        public AdminController(IArtistService artistService)
         {
-            _trackRepository = new TrackRepository();
-            _artistRepository = new ArtistRepository();
-            _albumRepository = new AlbumRepository();
-
-            _artistService = new ArtistService(_artistRepository);
+            _artistService = artistService;
         }
 
         [HttpGet]
@@ -35,7 +26,7 @@ namespace MusicStore.Web.Controllers
         public void AddArtist(ArtistVm model)
         {
             var artist = new Artist(model.Name, model.Country);
-            _artistRepository.Save(artist);
+            _artistService.Save(artist);
         }
 
         [HttpPost]
