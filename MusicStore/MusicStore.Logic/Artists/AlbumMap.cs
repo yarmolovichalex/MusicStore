@@ -8,14 +8,14 @@ namespace MusicStore.Logic.Artists
         {
             Id(x => x.Id);
             Map(x => x.Name);
-            Map(x => x.Year);
+            Map(x => x.Year).Nullable();
 
             References(x => x.Artist);
 
             Component(x => x.Price, y =>
             {
-                y.Map(x => x.Amount);
-                y.Map(x => x.Currency);
+                y.Map(x => x.Amount).Nullable();
+                y.Map(x => x.Currency).Nullable();
             });
 
             HasMany(x => x.Tracks).Cascade.SaveUpdate().Inverse();

@@ -11,7 +11,7 @@ namespace MusicStore.Logic.Artists
 
         public virtual Artist Artist { get; protected set; }
 
-        public virtual int Year { get; protected set; }
+        public virtual int? Year { get; protected set; }
 
         public virtual Money Price { get; protected set; }
 
@@ -21,13 +21,11 @@ namespace MusicStore.Logic.Artists
         {
         }
 
-        public Album(string name, Artist artist, int year, Money price)
+        public Album(string name, Artist artist, int? year, Money price)
         {
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
             if (artist == null)
-                throw new InvalidOperationException();
-            if (year < 1900 || year > DateTime.Now.Year)
                 throw new InvalidOperationException();
 
             Name = name;

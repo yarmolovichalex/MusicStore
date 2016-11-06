@@ -11,13 +11,13 @@ namespace MusicStore.Logic.Artists
 
         public virtual Album Album { get; protected set; }
 
-        public virtual TimeSpan Duration { get; protected set; }
+        public virtual TimeSpan? Duration { get; protected set; }
 
         protected Track()
         {
         }
 
-        public Track(int number, string name, Album album, TimeSpan duration)
+        public Track(int number, string name, Album album, TimeSpan? duration)
         {
             if (number < 1)
                 throw new InvalidOperationException();

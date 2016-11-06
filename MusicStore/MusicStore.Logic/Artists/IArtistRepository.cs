@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MusicStore.Logic.Common;
 
 namespace MusicStore.Logic.Artists
@@ -7,5 +8,6 @@ namespace MusicStore.Logic.Artists
     {
         Artist GetByName(string name);
         IList<Artist> GetAll();
+        void AddAlbum(Guid artistId, Album album);
     }
 }

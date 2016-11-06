@@ -1,5 +1,8 @@
 ﻿using System.Web.Mvc;
 using MusicStore.Logic.Artists;
+using MusicStore.Logic.Business;
+using MusicStore.Logic.DTOs.Album;
+using MusicStore.Logic.DTOs.Money;
 using MusicStore.Logic.SharedKernel;
 using MusicStore.Web.ViewModels;
 
@@ -11,11 +14,15 @@ namespace MusicStore.Web.Controllers
         private readonly IAlbumRepository _albumRepository;
         private readonly ITrackRepository _trackRepository;
 
+        private readonly IArtistService _artistService;
+
         public AdminController()
         {
             _trackRepository = new TrackRepository();
             _artistRepository = new ArtistRepository();
             _albumRepository = new AlbumRepository();
+
+            _artistService = new ArtistService(_artistRepository);
         }
 
         [HttpGet]
@@ -34,9 +41,17 @@ namespace MusicStore.Web.Controllers
         [HttpPost]
         public void AddAlbum(AlbumVm model)
         {
-            var artist = _artistRepository.GetByName(model.ArtistName);
-            var album = new Album(model.Name, artist, model.Year, new Money(model.Price.Amount, model.Price.Currency));
-            _albumRepository.Save(album);
+            _artistService.AddAlbum(new AddAlbumDTO
+            {
+                ArtistName = model.ArtistName,
+                Name = model.Name,
+                Year = model.Year,
+                Price = new MoneyDTO
+                {
+                    Amount = model.Price.Amount,
+                    Currency = model.Price.Currency
+                }
+            });
         }
 
         [HttpPost]

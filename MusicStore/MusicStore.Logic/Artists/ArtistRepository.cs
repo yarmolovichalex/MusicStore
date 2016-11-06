@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MusicStore.Logic.Common;
 using MusicStore.Logic.Utils;
@@ -22,6 +23,18 @@ namespace MusicStore.Logic.Artists
             using (ISession session = SessionFactory.OpenSession())
             {
                 return session.Query<Artist>().ToList();
+            }
+        }
+
+        public void AddAlbum(Guid artistId, Album album)
+        {
+            using (ISession session = SessionFactory.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                var artist = session.Get<Artist>(artistId);
+                artist.AddAlbum(album);
+                session.SaveOrUpdate(artist);
+                transaction.Commit();
             }
         }
     }
