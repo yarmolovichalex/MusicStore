@@ -26,12 +26,12 @@ namespace MusicStore.Logic.Artists
             }
         }
 
-        public void AddAlbum(Guid artistId, Album album)
+        public void AddAlbum(Album album)
         {
             using (ISession session = SessionFactory.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                var artist = session.Get<Artist>(artistId);
+                var artist = session.Get<Artist>(album.Artist.Id);
                 artist.AddAlbum(album);
                 session.SaveOrUpdate(artist);
                 transaction.Commit();

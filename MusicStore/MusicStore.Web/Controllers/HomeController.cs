@@ -1,23 +1,24 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using MusicStore.Logic.Artists;
+using MusicStore.Logic.Business;
 using MusicStore.Web.ViewModels;
 
 namespace MusicStore.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IArtistRepository _artistRepository;
-        private readonly IAlbumRepository _albumRepository;
+        private readonly IArtistService _artistService;
+        private readonly IAlbumService _albumService;
 
-        public HomeController()
+        public HomeController(IArtistService artistService, IAlbumService albumService)
         {
-            _albumRepository = new AlbumRepository();
-            _artistRepository = new ArtistRepository();
+            _artistService = artistService;
+            _albumService = albumService;
         }
 
         [HttpGet]
-        public ActionResult List()
+        public ActionResult Index()
         {
             return View();
         }
@@ -25,7 +26,7 @@ namespace MusicStore.Web.Controllers
         [HttpGet]
         public ActionResult GetArtists()
         {
-            var data = _artistRepository.GetAll();
+            var data = _artistService.GetAll();
             return Json(data.Select(x => new ArtistVm
             {
                 Name = x.Name,
@@ -36,11 +37,11 @@ namespace MusicStore.Web.Controllers
         [HttpGet]
         public ActionResult GetAlbums()
         {
-            var data = _albumRepository.GetAll();
+            var data = _albumService.GetAll();
             return Json(data.Select(x => new AlbumVm
             {
                 Name = x.Name,
-                ArtistName = _artistRepository.GetById(x.Artist.Id).Name, // TODO Optimize
+                ArtistName = x.ArtistName,
                 Year = x.Year,
                 Price = new MoneyVm
                 {

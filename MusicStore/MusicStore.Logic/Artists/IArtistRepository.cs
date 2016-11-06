@@ -8,6 +8,6 @@ namespace MusicStore.Logic.Artists
     {
         Artist GetByName(string name);
         IList<Artist> GetAll();
-        void AddAlbum(Guid artistId, Album album);
+        void AddAlbum(Album album);
     }
 }

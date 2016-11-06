@@ -71,6 +71,8 @@
     <Compile Include="Common\Repository.cs" />
     <Compile Include="Common\Entity.cs" />
     <Compile Include="DTOs\Album\AddAlbumDTO.cs" />
+    <Compile Include="DTOs\Album\AlbumDTO.cs" />
+    <Compile Include="DTOs\Artist\ArtistDTO.cs" />
     <Compile Include="DTOs\Money\MoneyDTO.cs" />
     <Compile Include="SharedKernel\Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
