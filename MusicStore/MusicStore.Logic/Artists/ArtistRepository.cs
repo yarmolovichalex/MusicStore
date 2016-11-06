@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MusicStore.Logic.Common;
+using MusicStore.Logic.DTOs.Album;
 using MusicStore.Logic.Utils;
 using NHibernate;
 using NHibernate.Linq;
@@ -36,6 +37,11 @@ namespace MusicStore.Logic.Artists
                 session.SaveOrUpdate(artist);
                 transaction.Commit();
             }
+        }
+
+        public IEnumerable<AlbumDTO> GetAllWithAlbums()
+        {
+            return null;
         }
     }
 }

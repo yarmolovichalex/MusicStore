@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MusicStore.Logic.Common;
+using MusicStore.Logic.DTOs.Album;
 
 namespace MusicStore.Logic.Artists
 {
@@ -9,5 +10,6 @@ namespace MusicStore.Logic.Artists
         Artist GetByName(string name);
         IList<Artist> GetAll();
         void AddAlbum(Album album);
+        IEnumerable<AlbumDTO> GetAllWithAlbums();
     }
 }
