@@ -3,8 +3,9 @@ import 'angular-route';
 
 import controllers from "./controllers";
 
-angular
-    .module('musicStoreApp', ['ngRoute'])
+console.log(controllers);
+
+angular.module('musicStoreApp', ['ngRoute', controllers.name])
     .config([
         '$routeProvider', function($routeProvider) {
             $routeProvider
@@ -31,5 +32,3 @@ angular
                 .otherwise({ redirectTo: '/404.html' });
         }
     ]);
-
-controllers();

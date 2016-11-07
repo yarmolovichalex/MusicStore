@@ -1,11 +1,6 @@
-﻿import angular from 'angular';
-import AdminController from "../controllers/admin-controller.js";
-import HomeController from "../controllers/home-controller.js";
+﻿import admin from "./admin";
+import home from "./home";
 
-export default function() {
-
-    var app = angular.module('musicStoreApp');
-    app.controller('AdminController', AdminController);
-    app.controller('HomeController', HomeController);
-
-};
+export default angular.module('musicStoreApp.controllers', [])
+    .controller('AdminController', admin)
+    .controller('HomeController', home);
