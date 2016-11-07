@@ -1,5 +1,6 @@
-﻿angular
-    .module('musicStoreApp')
+﻿import angular from angular;
+
+let defaultRoute = angular
     .directive('defaultRoute', function() {
         return {
             restrict: 'A',
