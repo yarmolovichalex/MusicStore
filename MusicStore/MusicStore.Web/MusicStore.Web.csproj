@@ -100,8 +100,8 @@
     <Content Include="Content\site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\controllers\admin-controller.js" />
-    <Content Include="Scripts\controllers\home-controller.js" />
+    <Content Include="Scripts\controllers\admin.js" />
+    <Content Include="Scripts\controllers\home.js" />
     <Content Include="Scripts\controllers\index.js" />
     <Content Include="Scripts\directives\default-route.js" />
     <Content Include="Scripts\directives\index.js" />
