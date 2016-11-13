@@ -17,7 +17,7 @@ namespace MusicStore.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddEntity()
+        public ActionResult Index()
         {
             return View();
         }

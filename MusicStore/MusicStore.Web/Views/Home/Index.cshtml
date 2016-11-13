@@ -1,18 +1,17 @@
 ﻿@{
     ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<div>
-    <div ng-controller="HomeController">
-        <ul class="nav nav-tabs">
-            <li ng-class="{'active': selectedTab === 'ArtistList'}">
-                <a ng-click="changeTab('ArtistList')">Artists</a>
-            </li>
-            <li ng-class="{'active': selectedTab === 'AlbumList'}">
-                <a ng-click="changeTab('AlbumList')">Albums</a>
-            </li>
-        </ul>
+<main ng-controller="HomeController">
+    <ul class="nav nav-tabs">
+        <li ng-class="{'active': selectedTab === 'ArtistList'}">
+            <a ng-click="changeTab('ArtistList')">Artists</a>
+        </li>
+        <li ng-class="{'active': selectedTab === 'AlbumList'}">
+            <a ng-click="changeTab('AlbumList')">Albums</a>
+        </li>
+    </ul>
 
-        <div ng-view></div>
-    </div>
-</div>
+    <div ng-view></div>
+</main>
