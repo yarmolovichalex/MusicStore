@@ -11,7 +11,7 @@
         </div>
 
         @{
-            var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+            var controllerName = ViewContext.RouteData.Values["controller"].ToString();
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
@@ -22,8 +22,15 @@
                         <a href="@Url.Action("Index", "Admin")">Admin</a>
                     </li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("RefreshSchema", "Admin")">Refresh Schema</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("PopulateDb", "Admin")">Populate DB</a>
+                    </li>
+                </ul>
             </div>
         }
-        
     </div>
 </nav>
