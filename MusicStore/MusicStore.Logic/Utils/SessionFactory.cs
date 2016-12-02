@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
@@ -14,20 +15,48 @@ namespace MusicStore.Logic.Utils
     public static class SessionFactory
     {
         private static ISessionFactory _factory;
+        private static string _connectionString;
 
         public static ISession OpenSession()
         {
             return _factory.OpenSession();
         }
 
-        public static void Init(string connectionString)
+        public static IStatelessSession OpenStatelessSession()
         {
-            _factory = BuildSessionFactory(connectionString);
+            return _factory.OpenStatelessSession();
         }
 
-        private static ISessionFactory BuildSessionFactory(string connectionString)
+        public static void Init(string connectionString)
         {
-            FluentConfiguration configuration = Fluently.Configure()
+            _connectionString = connectionString;
+            _factory = 
+                BuildConfiguration(connectionString)
+                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
+                .BuildSessionFactory();
+        }
+
+        public static void RefreshSchema()
+        {
+            if (string.IsNullOrEmpty(_connectionString))
+            {
+                throw new InvalidOperationException("Connection string must be populated");
+            }
+
+            _factory = _factory =
+                BuildConfiguration(_connectionString)
+                .ExposeConfiguration(cfg =>
+                {
+                    var schema = new SchemaExport(cfg);
+                    schema.Drop(false, true);
+                    schema.Create(false, true);
+                })
+                .BuildSessionFactory();
+        }
+
+        private static FluentConfiguration BuildConfiguration(string connectionString)
+        {
+            return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString))
                 .Mappings(m => m.FluentMappings
                     .AddFromAssembly(Assembly.GetExecutingAssembly())
@@ -35,10 +64,7 @@ namespace MusicStore.Logic.Utils
                     .Conventions.Add<TableNameConvention>()
                     .Conventions.Add<GuidCombConvention>()
                     .Conventions.Add<ColumnNullabilityConvention>()
-                    .Conventions.Add<ReferenceNullabilityConvention>()
-                ).ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
-
-            return configuration.BuildSessionFactory();
+                    .Conventions.Add<ReferenceNullabilityConvention>());
         }
 
         public class TableNameConvention : IClassConvention

@@ -10,7 +10,7 @@ namespace MusicStore.Logic.Artists
             Map(x => x.Name).Not.Nullable().Unique();
             Map(x => x.Country).Nullable();
 
-            HasMany(x => x.Albums).Cascade.SaveUpdate().Inverse();
+            HasMany(x => x.Albums).Cascade.All().Inverse();
         }
     }
 }

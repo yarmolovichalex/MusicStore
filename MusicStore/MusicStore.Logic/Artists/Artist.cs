@@ -10,7 +10,9 @@ namespace MusicStore.Logic.Artists
 
         public virtual string Country { get; protected set; }
 
-        public virtual ICollection<Album> Albums { get; }
+
+        private readonly ICollection<Album> _albums;
+        public virtual IEnumerable<Album> Albums => _albums;
 
         protected Artist()
         {
@@ -23,12 +25,12 @@ namespace MusicStore.Logic.Artists
 
             Name = name;
             Country = country;
-            Albums = new List<Album>();
+            _albums = new List<Album>();
         }
 
         public virtual void AddAlbum(Album album)
         {
-            Albums.Add(album);
+            _albums.Add(album);
         }
     }
 }

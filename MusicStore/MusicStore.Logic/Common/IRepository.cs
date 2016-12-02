@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MusicStore.Logic.Common
 {
@@ -6,5 +7,6 @@ namespace MusicStore.Logic.Common
     {
         T GetById(Guid id);
         void Save(T entity);
+        void Save(ICollection<T> entities);
     }
 }

@@ -10,5 +10,6 @@ namespace MusicStore.Logic.Business
         void AddAlbum(AddAlbumDTO dto);
         void Save(Artist artist);
         IEnumerable<ArtistDTO> GetAll();
+        void Save(ICollection<Artist> artists);
     }
 }

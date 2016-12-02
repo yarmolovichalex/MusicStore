@@ -6,5 +6,10 @@
         {
             SessionFactory.Init(connectionString);
         }
+
+        public static void RefreshSchema()
+        {
+            SessionFactory.RefreshSchema();
+        }
     }
 }

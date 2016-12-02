@@ -21,7 +21,7 @@ namespace MusicStore.Logic.Business
             var artist = _artistRepository.GetByName(dto.ArtistName);
             if (artist != null)
             {
-                _artistRepository.AddAlbum(new Album(dto.Name, artist, dto.Year.Value, new Money(dto.Price.Amount ?? 0m, dto.Price.Currency)));
+                _artistRepository.AddAlbum(new Album(dto.Name, artist, dto.Year, new Money(dto.Price.Amount ?? 0m, dto.Price.Currency)));
             }
         }
 
@@ -30,6 +30,8 @@ namespace MusicStore.Logic.Business
             _artistRepository.Save(artist);
         }
 
+
+
         public IEnumerable<ArtistDTO> GetAll()
         {
             return _artistRepository.GetAll().Select(x => new ArtistDTO
@@ -37,6 +39,11 @@ namespace MusicStore.Logic.Business
                 Name = x.Name,
                 Country = x.Country
             });
+        }
+
+        public void Save(ICollection<Artist> artists)
+        {
+            _artistRepository.Save(artists);
         }
     }
 }
