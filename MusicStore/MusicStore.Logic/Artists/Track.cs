@@ -17,15 +17,16 @@ namespace MusicStore.Logic.Artists
         {
         }
 
-        public Track(int number, string name, Album album, TimeSpan? duration)
+        public Track(int number, string name, Album album, TimeSpan? duration = null)
         {
             if (number < 1)
                 throw new InvalidOperationException();
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
-            if (Album == null)
+            if (album == null)
                 throw new InvalidOperationException();
 
+            Number = number;
             Name = name;
             Album = album;
             Duration = duration;

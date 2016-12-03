@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using MusicStore.Logic.Artists;
 using MusicStore.Logic.Business;
@@ -60,8 +61,22 @@ namespace MusicStore.Web.Controllers
         public ActionResult PopulateDb()
         {
             var artist1 = new Artist("Metallica", "USA");
-            artist1.AddAlbum(new Album("Master Of Puppets", artist1, 1986, new Money(10.0m, "USD")));
-            artist1.AddAlbum(new Album("Metallica", artist1, 1991, new Money(8.0m, "USD")));
+            var album1_1 = new Album("Master Of Puppets", artist1, 1986, new Money(10.0m, "USD"));
+            var tracks1_1 = new List<Track>
+            {
+                new Track(1, "Battery", album1_1),
+                new Track(2, "Master of Puppets", album1_1),
+                new Track(3, "The Thing That Should Not Be", album1_1),
+                new Track(4, "Welcome Home (Sanitarium)", album1_1),
+                new Track(5, "Disposable Heroes", album1_1),
+                new Track(6, "Leper Messiah", album1_1),
+                new Track(7, "Orion", album1_1),
+                new Track(8, "Damage, Inc.", album1_1)
+            };
+            album1_1.AddTracks(tracks1_1);
+
+            var album1_2 = new Album("Metallica", artist1, 1991, new Money(8.0m, "USD"));
+            artist1.AddAlbums(new List<Album> { album1_1, album1_2 });
 
             var artist2 = new Artist("Slipknot", "USA");
             artist2.AddAlbum(new Album("Iowa", artist2, 2001, new Money(6.0m, "USD")));

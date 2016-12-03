@@ -15,7 +15,8 @@ namespace MusicStore.Logic.Artists
 
         public virtual Money Price { get; protected set; }
 
-        public virtual IList<Track> Tracks { get; }
+        private readonly ICollection<Track> _tracks; 
+        public virtual IEnumerable<Track> Tracks => _tracks;
 
         protected Album()
         {
@@ -32,7 +33,15 @@ namespace MusicStore.Logic.Artists
             Artist = artist;
             Year = year;
             Price = price;
-            Tracks = new List<Track>();
+            _tracks = new List<Track>();
+        }
+
+        public virtual void AddTracks(IEnumerable<Track> tracks)
+        {
+            foreach (var track in tracks)
+            {
+                _tracks.Add(track);
+            }
         }
     }
 }

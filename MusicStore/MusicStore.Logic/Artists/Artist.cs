@@ -32,5 +32,13 @@ namespace MusicStore.Logic.Artists
         {
             _albums.Add(album);
         }
+
+        public virtual void AddAlbums(IEnumerable<Album> albums)
+        {
+            foreach (var album in albums)
+            {
+                _albums.Add(album);
+            }
+        }
     }
 }
