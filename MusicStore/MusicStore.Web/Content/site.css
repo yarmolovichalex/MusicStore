@@ -1,3 +1,11 @@
 ﻿a[ng-click] {
     cursor: pointer;
 }
+
+table tbody tr.collapse-row td {
+    padding: 0;
+}
+
+table tbody tr.collapse-row:hover {
+    background-color: white;
+}

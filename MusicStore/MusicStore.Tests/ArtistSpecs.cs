@@ -15,7 +15,7 @@ namespace MusicStore.Tests
 
         private Album GetFakeAlbum()
         {
-            return new Album("Metallica", GetFakeArtist(), 1991, null);
+            return new Album("Metallica", GetFakeArtist(), 1991);
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_album_without_name()
         {
-            Action action =() => new Album(string.Empty, GetFakeArtist(), 1991, null);
+            Action action =() => new Album(string.Empty, GetFakeArtist(), 1991);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -37,7 +37,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_album_without_artist()
         {
-            Action action = () => new Album("Master of Puppets", null, 1991, null);
+            Action action = () => new Album("Master of Puppets", null, 1991);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -45,7 +45,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_track_without_number()
         {
-            Action action = () => new Track(0, "Enter Sandman", GetFakeAlbum(), TimeSpan.FromMinutes(5));
+            Action action = () => new Track(0, "Enter Sandman", GetFakeAlbum(), 300);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -53,7 +53,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_track_without_name()
         {
-            Action action = () => new Track(1, string.Empty, GetFakeAlbum(), TimeSpan.FromMinutes(5) );
+            Action action = () => new Track(1, string.Empty, GetFakeAlbum(), 300);
 
             action.ShouldThrow<InvalidOperationException>();
         }
@@ -61,7 +61,7 @@ namespace MusicStore.Tests
         [Fact]
         public void Cant_create_track_without_album()
         {
-            Action action = () => new Track(1, "Enter Sandman", null, TimeSpan.FromMinutes(5));
+            Action action = () => new Track(1, "Enter Sandman", null, 300);
 
             action.ShouldThrow<InvalidOperationException>();
         }

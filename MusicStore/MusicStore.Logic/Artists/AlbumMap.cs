@@ -12,11 +12,11 @@ namespace MusicStore.Logic.Artists
 
             References(x => x.Artist);
 
-            Component(x => x.Price, y =>
-            {
-                y.Map(x => x.Amount).Nullable();
-                y.Map(x => x.Currency).Nullable();
-            });
+            //Component(x => x.Price, y =>
+            //{
+            //    y.Map(x => x.Amount).Nullable();
+            //    y.Map(x => x.Currency).Nullable();
+            //});
 
             HasMany(x => x.Tracks).Cascade.All().Inverse();
         }

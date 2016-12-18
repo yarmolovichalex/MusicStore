@@ -25,22 +25,5 @@ namespace MusicStore.Logic.Artists
                 return session.Query<Artist>().ToList();
             }
         }
-
-        public void AddAlbum(Album album)
-        {
-            using (ISession session = SessionFactory.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                var artist = session.Get<Artist>(album.Artist.Id);
-                artist.AddAlbum(album);
-                session.SaveOrUpdate(artist);
-                transaction.Commit();
-            }
-        }
-
-        public IEnumerable<AlbumDTO> GetAllWithAlbums()
-        {
-            return null;
-        }
     }
 }

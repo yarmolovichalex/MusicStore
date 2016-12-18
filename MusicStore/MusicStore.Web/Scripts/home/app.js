@@ -1,6 +1,6 @@
 ﻿import controllers from "./controllers";
 
-angular.module('musicStoreApp', ['ngRoute', controllers.name])
+angular.module('musicStoreApp', ['ngRoute', 'ui.bootstrap', 'ngAnimate', controllers.name])
     .config([
         '$routeProvider', function($routeProvider) {
             $routeProvider
@@ -16,4 +16,8 @@ angular.module('musicStoreApp', ['ngRoute', controllers.name])
                 })
                 .otherwise({ redirectTo: '/artistList' });
         }
-    ]);
+    ]).filter('secondsToDateTime', [function() {
+        return function(seconds) {
+            return new Date(1970, 0, 1).setSeconds(seconds);
+        };
+    }]);

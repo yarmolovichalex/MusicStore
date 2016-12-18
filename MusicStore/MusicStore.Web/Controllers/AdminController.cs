@@ -5,8 +5,10 @@ using MusicStore.Logic.Artists;
 using MusicStore.Logic.Business;
 using MusicStore.Logic.DTOs.Album;
 using MusicStore.Logic.DTOs.Money;
+using MusicStore.Logic.DTOs.Track;
 using MusicStore.Logic.SharedKernel;
 using MusicStore.Logic.Utils;
+using MusicStore.Web.Helpers;
 using MusicStore.Web.ViewModels;
 
 namespace MusicStore.Web.Controllers
@@ -38,16 +40,16 @@ namespace MusicStore.Web.Controllers
         [HttpPost]
         public void AddAlbum(AlbumVm model)
         {
-            _artistService.AddAlbum(new AddAlbumDTO
+            _albumService.AddAlbum(new AlbumDTO
             {
                 ArtistName = model.ArtistName,
                 Name = model.Name,
-                Year = model.Year,
-                Price = new MoneyDTO
-                {
-                    Amount = model.Price.Amount,
-                    Currency = model.Price.Currency
-                }
+                Year = model.Year
+                //Price = new MoneyDTO
+                //{
+                //    Amount = model.Price.Amount,
+                //    Currency = model.Price.Currency
+                //}
             });
         }
 
@@ -61,36 +63,60 @@ namespace MusicStore.Web.Controllers
         public ActionResult PopulateDb()
         {
             var artist1 = new Artist("Metallica", "USA");
-            var album1_1 = new Album("Master Of Puppets", artist1, 1986, new Money(10.0m, "USD"));
-            var tracks1_1 = new List<Track>
+            var album1_1 = new AddAlbumDTO
             {
-                new Track(1, "Battery", album1_1),
-                new Track(2, "Master of Puppets", album1_1),
-                new Track(3, "The Thing That Should Not Be", album1_1),
-                new Track(4, "Welcome Home (Sanitarium)", album1_1),
-                new Track(5, "Disposable Heroes", album1_1),
-                new Track(6, "Leper Messiah", album1_1),
-                new Track(7, "Orion", album1_1),
-                new Track(8, "Damage, Inc.", album1_1)
+                Name = "Master Of Puppets",
+                Year = 1986,
+                Tracks = new List<AddTrackDTO>
+                {
+                    new AddTrackDTO { Number = 1, Name = "Battery", Duration = DateHelper.GetSeconds(5, 13) },
+                    new AddTrackDTO { Number = 2, Name = "Master of Puppets", Duration = DateHelper.GetSeconds(8, 35) },
+                    new AddTrackDTO { Number = 3, Name = "The Thing That Should Not Be", Duration = DateHelper.GetSeconds(6, 36) },
+                    new AddTrackDTO { Number = 4, Name = "Welcome Home (Sanitarium)", Duration = DateHelper.GetSeconds(6, 27) },
+                    new AddTrackDTO { Number = 5, Name = "Disposable Heroes", Duration = DateHelper.GetSeconds(8, 17) },
+                    new AddTrackDTO { Number = 6, Name = "Leper Messiah", Duration = DateHelper.GetSeconds(5, 40) },
+                    new AddTrackDTO { Number = 7, Name = "Orion", Duration = DateHelper.GetSeconds(8, 27) },
+                    new AddTrackDTO { Number = 8, Name = "Damage, Inc.", Duration = DateHelper.GetSeconds(5, 31) }
+                }
             };
-            album1_1.AddTracks(tracks1_1);
 
-            var album1_2 = new Album("Metallica", artist1, 1991, new Money(8.0m, "USD"));
-            artist1.AddAlbums(new List<Album> { album1_1, album1_2 });
+            var album1_2 = new AddAlbumDTO
+            {
+                Name = "Metallica",
+                Year = 1991,
+                Tracks = new List<AddTrackDTO>
+                {
+                    new AddTrackDTO { Number = 1, Name = "Enter Sandman", Duration = DateHelper.GetSeconds(5, 32) },
+                    new AddTrackDTO { Number = 2, Name = "Sad but True", Duration = DateHelper.GetSeconds(5, 25) },
+                    new AddTrackDTO { Number = 3, Name = "Holier Than Thou", Duration = DateHelper.GetSeconds(3, 48) },
+                    new AddTrackDTO { Number = 4, Name = "The Unforgiven", Duration = DateHelper.GetSeconds(6, 27) },
+                    new AddTrackDTO { Number = 5, Name = "Wherever I May Roam", Duration = DateHelper.GetSeconds(6, 44) },
+                    new AddTrackDTO { Number = 6, Name = "Don't Tread on Me", Duration = DateHelper.GetSeconds(4, 0) },
+                    new AddTrackDTO { Number = 7, Name = "Through the Never", Duration = DateHelper.GetSeconds(4, 04) },
+                    new AddTrackDTO { Number = 8, Name = "Nothing Else Matters", Duration = DateHelper.GetSeconds(6, 29) },
+                    new AddTrackDTO { Number = 9, Name = "Of Wolf and Man", Duration = DateHelper.GetSeconds(4, 17) },
+                    new AddTrackDTO { Number = 10, Name = "The God That Failed", Duration = DateHelper.GetSeconds(5, 9) },
+                    new AddTrackDTO { Number = 11, Name = "My Friend of Misery", Duration = DateHelper.GetSeconds(6, 50) },
+                    new AddTrackDTO { Number = 12, Name = "The Struggle Within", Duration = DateHelper.GetSeconds(3, 54) }
+                }
+            };
 
-            var artist2 = new Artist("Slipknot", "USA");
-            artist2.AddAlbum(new Album("Iowa", artist2, 2001, new Money(6.0m, "USD")));
-            artist2.AddAlbum(new Album("Slipknot", artist2, 1999, new Money(6.0m, "USD")));
+            artist1.AddAlbums(new List<AddAlbumDTO> { album1_1, album1_2 });
 
-            var artist3 = new Artist("Rammstein", "Germany");
-            artist3.AddAlbum(new Album("Mutter", artist3, 2001, new Money(8.0m, "EUR")));
-            artist3.AddAlbum(new Album("Reise, Reise", artist3, 2004, new Money(8.0m, "EUR")));
+            //var artist2 = new Artist("Slipknot", "USA");
+
+            //artist2.AddAlbum(new Album("Iowa", artist2, 2001, new Money(6.0m, "USD")));
+            //artist2.AddAlbum(new Album("Slipknot", artist2, 1999, new Money(6.0m, "USD")));
+
+            //var artist3 = new Artist("Rammstein", "Germany");
+            //artist3.AddAlbum(new Album("Mutter", artist3, 2001, new Money(8.0m, "EUR")));
+            //artist3.AddAlbum(new Album("Reise, Reise", artist3, 2004, new Money(8.0m, "EUR")));
 
             _artistService.Save(new List<Artist>
             {
                 artist1,
-                artist2,
-                artist3
+                //artist2,
+                //artist3
             });
 
             return RedirectToAction("Index", "Home");

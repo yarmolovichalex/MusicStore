@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace MusicStore.Web.ViewModels
+namespace MusicStore.Logic.DTOs.Track
 {
-    public class TrackVm
+    public class TrackDTO
     {
         public int Number { get; set; }
         public string Name { get; set; }

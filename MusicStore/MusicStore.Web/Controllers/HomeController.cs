@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-using MusicStore.Logic.Artists;
 using MusicStore.Logic.Business;
 using MusicStore.Web.ViewModels;
 
@@ -45,9 +45,15 @@ namespace MusicStore.Web.Controllers
                 Year = x.Year,
                 Price = new MoneyVm
                 {
-                    Amount = x.Price.Amount,
-                    Currency = x.Price.Currency
-                }
+                    Amount = 10m,
+                    Currency = "USD" // implement Pricing bounded context
+                },
+                Tracks = x.Tracks.Select(y => new TrackVm
+                {
+                    Number = y.Number,
+                    Name = y.Name,
+                    Duration = y.Duration
+                })
             }), JsonRequestBehavior.AllowGet);
         }
     }

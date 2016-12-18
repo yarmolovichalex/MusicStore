@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MusicStore.Logic.Common;
-using MusicStore.Logic.SharedKernel;
+using MusicStore.Logic.DTOs.Track;
 
 namespace MusicStore.Logic.Artists
 {
@@ -13,8 +13,6 @@ namespace MusicStore.Logic.Artists
 
         public virtual int? Year { get; protected set; }
 
-        public virtual Money Price { get; protected set; }
-
         private readonly ICollection<Track> _tracks; 
         public virtual IEnumerable<Track> Tracks => _tracks;
 
@@ -22,7 +20,7 @@ namespace MusicStore.Logic.Artists
         {
         }
 
-        public Album(string name, Artist artist, int? year, Money price)
+        public Album(string name, Artist artist, int? year)
         {
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
@@ -32,15 +30,14 @@ namespace MusicStore.Logic.Artists
             Name = name;
             Artist = artist;
             Year = year;
-            Price = price;
             _tracks = new List<Track>();
         }
 
-        public virtual void AddTracks(IEnumerable<Track> tracks)
+        public virtual void AddTracks(IEnumerable<AddTrackDTO> tracks)
         {
             foreach (var track in tracks)
             {
-                _tracks.Add(track);
+                _tracks.Add(new Track(track.Number, track.Name, this, track.Duration));
             }
         }
     }

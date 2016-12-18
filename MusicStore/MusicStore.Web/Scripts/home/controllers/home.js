@@ -14,6 +14,11 @@
             $http.get('/musicstore/home/getAlbums')
                 .then(function(response) {
                     $scope.albums = response.data;
+                   
+                    $scope.rowExpand = [];
+                    for (var i = 0; i < $scope.albums.length; i++) {
+                        $scope.rowExpand.push(true);
+                    }
                 });
         }
 
@@ -51,5 +56,9 @@
                 $scope.selectedTab = 'ArtistList';
             }
         });
+
+        $scope.expandTableRow = function (index) {
+            $scope.rowExpand[index] = !$scope.rowExpand[index];
+        };
     }
 ];

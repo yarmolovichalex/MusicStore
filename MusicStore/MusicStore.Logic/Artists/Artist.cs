@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MusicStore.Logic.Common;
+using MusicStore.Logic.DTOs.Album;
 
 namespace MusicStore.Logic.Artists
 {
@@ -28,16 +29,22 @@ namespace MusicStore.Logic.Artists
             _albums = new List<Album>();
         }
 
-        public virtual void AddAlbum(Album album)
+        public virtual void AddAlbum(AddAlbumDTO dto)
         {
+            var album = new Album(dto.Name, this, dto.Year);
+            if (dto.Tracks != null)
+            {
+                album.AddTracks(dto.Tracks);
+            }
+
             _albums.Add(album);
         }
 
-        public virtual void AddAlbums(IEnumerable<Album> albums)
+        public virtual void AddAlbums(IEnumerable<AddAlbumDTO> albums)
         {
             foreach (var album in albums)
             {
-                _albums.Add(album);
+                AddAlbum(album);
             }
         }
     }

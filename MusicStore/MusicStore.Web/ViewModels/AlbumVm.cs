@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MusicStore.Web.ViewModels
 {
@@ -9,5 +10,6 @@ namespace MusicStore.Web.ViewModels
         public string ArtistName { get; set; } // TODO remove
         public int? Year { get; set; }
         public MoneyVm Price { get; set; }
+        public IEnumerable<TrackVm> Tracks { get; set; }
     }
 }

@@ -11,6 +11,7 @@ module.exports = {
         filename: "[name].min.js",
         publicPath: "/public/"
     },
+    devtool: "source-map",
     module: {
         loaders: [
             {
@@ -32,7 +33,9 @@ module.exports = {
                 test: /\.scss$/,
                 loaders: ["style", "css", "sass"]
             },
-			{ test: /\.css$/, loader: "style!css" },
+            {
+                test: /\.css$/, loader: "style!css" 
+            },
             {
                 test: /\.js$/,
                 loader: 'babel',

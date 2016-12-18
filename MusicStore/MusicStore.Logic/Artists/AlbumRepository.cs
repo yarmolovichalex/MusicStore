@@ -2,7 +2,7 @@
 using System.Linq;
 using MusicStore.Logic.Common;
 using MusicStore.Logic.DTOs.Album;
-using MusicStore.Logic.DTOs.Money;
+using MusicStore.Logic.DTOs.Track;
 using MusicStore.Logic.Utils;
 using NHibernate;
 using NHibernate.Linq;
@@ -20,11 +20,12 @@ namespace MusicStore.Logic.Artists
                     ArtistName = x.Artist.Name,
                     Name = x.Name,
                     Year = x.Year,
-                    Price = new MoneyDTO
+                    Tracks = x.Tracks.Select(y => new TrackDTO
                     {
-                        Amount = x.Price.Amount,
-                        Currency = x.Price.Currency
-                    }
+                        Number = y.Number,
+                        Name = y.Name,
+                        Duration = y.Duration
+                    })
                 }).ToList();
             }
         }
