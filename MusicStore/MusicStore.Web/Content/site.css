@@ -6,6 +6,6 @@ table tbody tr.collapse-row td {
     padding: 0;
 }
 
-table tbody tr.collapse-row:hover {
+table tbody tr.expand-row:hover {
     background-color: white;
 }

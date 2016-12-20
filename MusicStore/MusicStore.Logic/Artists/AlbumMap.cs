@@ -18,7 +18,7 @@ namespace MusicStore.Logic.Artists
             //    y.Map(x => x.Currency).Nullable();
             //});
 
-            HasMany(x => x.Tracks).Cascade.All().Inverse();
+            HasMany(x => x.Tracks).Cascade.All().Inverse().AsSet();
         }
     }
 }

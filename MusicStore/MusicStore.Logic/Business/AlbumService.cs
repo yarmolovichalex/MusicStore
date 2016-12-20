@@ -7,17 +7,15 @@ namespace MusicStore.Logic.Business
     public class AlbumService : IAlbumService
     {
         private readonly IArtistRepository _artistRepository;
-        private readonly IAlbumRepository _albumRepository;
 
-        public AlbumService(IAlbumRepository albumRepository, IArtistRepository artistRepository)
+        public AlbumService(IArtistRepository artistRepository)
         {
-            _albumRepository = albumRepository;
             _artistRepository = artistRepository;
         }
 
         public IEnumerable<AlbumDTO> GetAll()
         {
-            return _albumRepository.GetAll();
+            return _artistRepository.GetAllAlbums();
         }
 
         public void AddAlbum(AlbumDTO album)
