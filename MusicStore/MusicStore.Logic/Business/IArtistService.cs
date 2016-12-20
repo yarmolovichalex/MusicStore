@@ -8,6 +8,7 @@ namespace MusicStore.Logic.Business
     {
         void Save(Artist artist);
         IEnumerable<ArtistDTO> GetAll();
+        void Save(ICollection<EditArtistDTO> artists);
         void Save(ICollection<Artist> artists);
     }
 }

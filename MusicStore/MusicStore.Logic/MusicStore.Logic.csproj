@@ -69,6 +69,7 @@
     <Compile Include="DTOs\Album\AddAlbumDTO.cs" />
     <Compile Include="DTOs\Album\AlbumDTO.cs" />
     <Compile Include="DTOs\Artist\ArtistDTO.cs" />
+    <Compile Include="DTOs\Artist\EditArtistDTO.cs" />
     <Compile Include="DTOs\Money\MoneyDTO.cs" />
     <Compile Include="DTOs\Track\AddTrackDTO.cs" />
     <Compile Include="DTOs\Track\TrackDTO.cs" />

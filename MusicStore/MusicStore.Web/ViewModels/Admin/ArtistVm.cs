@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace MusicStore.Logic.DTOs.Artist
+namespace MusicStore.Web.ViewModels.Admin
 {
-    public class ArtistDTO
+    public class ArtistVm
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
     }

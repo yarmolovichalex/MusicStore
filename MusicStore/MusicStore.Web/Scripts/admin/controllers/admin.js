@@ -30,10 +30,9 @@
             }
         });
 
-        $scope.saveArtist = function() {
-            $http.post('/musicstore/admin/addartist', {
-                Name: $scope.artist.name,
-                Country: $scope.artist.country
+        $scope.saveArtists = function() {
+            $http.post('/musicstore/admin/saveartists', {
+                artists: $scope.artists
             });
         }
 
@@ -47,6 +46,17 @@
                     Currency: "USD" // todo DDL for currencies
                 }
             });
+        }
+
+        let getArtists = function() {
+            $http.get('/musicstore/admin/getArtists')
+                .then(function(response) {
+                    $scope.artists = response.data;
+                });
+        }
+
+        if ($scope.selectedTab === 'Artist') {
+            getArtists();
         }
     }
 ];

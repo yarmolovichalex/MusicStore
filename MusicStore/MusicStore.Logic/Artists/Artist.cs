@@ -47,5 +47,14 @@ namespace MusicStore.Logic.Artists
                 AddAlbum(album);
             }
         }
+
+        public virtual void UpdateInfo(string name, string country)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException(); // todo move validations to separate method
+
+            Name = name;
+            Country = country;
+        }
     }
 }

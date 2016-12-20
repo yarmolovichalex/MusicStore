@@ -126,8 +126,10 @@
     <Compile Include="Infrastructure\RepositoriesInstaller.cs" />
     <Compile Include="Infrastructure\ServicesInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Admin\ArtistVm.cs" />
     <Compile Include="ViewModels\AlbumVm.cs" />
     <Compile Include="ViewModels\ArtistVm.cs" />
+    <Compile Include="ViewModels\Admin\EditArtistVm.cs" />
     <Compile Include="ViewModels\MoneyVm.cs" />
     <Compile Include="ViewModels\TrackVm.cs" />
   </ItemGroup>

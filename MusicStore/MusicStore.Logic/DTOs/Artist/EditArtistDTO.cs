@@ -2,9 +2,9 @@
 
 namespace MusicStore.Logic.DTOs.Artist
 {
-    public class ArtistDTO
+    public class EditArtistDTO
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
     }

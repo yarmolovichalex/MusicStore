@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using MusicStore.Logic.Artists;
 using MusicStore.Logic.Business;
 using MusicStore.Logic.DTOs.Album;
-using MusicStore.Logic.DTOs.Money;
+using MusicStore.Logic.DTOs.Artist;
 using MusicStore.Logic.DTOs.Track;
-using MusicStore.Logic.SharedKernel;
 using MusicStore.Logic.Utils;
 using MusicStore.Web.Helpers;
-using MusicStore.Web.ViewModels;
+using MusicStore.Web.ViewModels.Admin;
 
 namespace MusicStore.Web.Controllers
 {
@@ -30,34 +29,44 @@ namespace MusicStore.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        public void AddArtist(ArtistVm model)
+        [HttpGet]
+        public ActionResult GetArtists()
         {
-            var artist = new Artist(model.Name, model.Country);
-            _artistService.Save(artist);
-        }
-
-        [HttpPost]
-        public void AddAlbum(AlbumVm model)
-        {
-            _albumService.AddAlbum(new AlbumDTO
+            var data = _artistService.GetAll();
+            return Json(data.Select(x => new ArtistVm
             {
-                ArtistName = model.ArtistName,
-                Name = model.Name,
-                Year = model.Year
-                //Price = new MoneyDTO
-                //{
-                //    Amount = model.Price.Amount,
-                //    Currency = model.Price.Currency
-                //}
-            });
+                Id = x.Id,
+                Name = x.Name,
+                Country = x.Country
+            }), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public void AddTrack(TrackVm model)
+        public void SaveArtists(IEnumerable<EditArtistVm> artists)
         {
-            
+            _artistService.Save(artists.Select(x => new EditArtistDTO
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Country = x.Country
+            }).ToList());
         }
+
+        //[HttpPost]
+        //public void AddAlbum(AlbumVm model)
+        //{
+        //    _albumService.AddAlbum(new AlbumDTO
+        //    {
+        //        ArtistName = model.ArtistName,
+        //        Name = model.Name,
+        //        Year = model.Year
+        //        //Price = new MoneyDTO
+        //        //{
+        //        //    Amount = model.Price.Amount,
+        //        //    Currency = model.Price.Currency
+        //        //}
+        //    });
+        //}
 
         [HttpGet]
         public ActionResult PopulateDb()
@@ -103,20 +112,20 @@ namespace MusicStore.Web.Controllers
 
             artist1.AddAlbums(new List<AddAlbumDTO> { album1_1, album1_2 });
 
-            //var artist2 = new Artist("Slipknot", "USA");
+            var artist2 = new Artist("Slipknot", "USA");
 
             //artist2.AddAlbum(new Album("Iowa", artist2, 2001, new Money(6.0m, "USD")));
             //artist2.AddAlbum(new Album("Slipknot", artist2, 1999, new Money(6.0m, "USD")));
 
-            //var artist3 = new Artist("Rammstein", "Germany");
+            var artist3 = new Artist("Rammstein", "Germany");
             //artist3.AddAlbum(new Album("Mutter", artist3, 2001, new Money(8.0m, "EUR")));
             //artist3.AddAlbum(new Album("Reise, Reise", artist3, 2004, new Money(8.0m, "EUR")));
 
             _artistService.Save(new List<Artist>
             {
                 artist1,
-                //artist2,
-                //artist3
+                artist2,
+                artist3
             });
 
             return RedirectToAction("Index", "Home");

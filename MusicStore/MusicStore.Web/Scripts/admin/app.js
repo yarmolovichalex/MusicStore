@@ -1,6 +1,6 @@
 ﻿import controllers from "./controllers";
 
-angular.module('musicStoreApp', ['ngRoute', controllers.name])
+angular.module('musicStoreApp', ['ngRoute', 'ui.grid', 'ui.grid.cellNav', 'ui.grid.edit', controllers.name])
     .config([
         '$routeProvider', function($routeProvider) {
             $routeProvider

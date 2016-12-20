@@ -1,12 +1,5 @@
-﻿<h3>Add artist:</h3>
-<form name="addArtistForm">
-    <fieldset class="form-group">
-        <label for="artistName">Name</label>
-        <input id="artistName" name="artistName" ng-model="artist.name" class="form-control" />
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="artistCountry">Country</label>
-        <input id="artistCountry" name="artistCountry" ng-model="artist.country" class="form-control" />
-    </fieldset>
-    <button type="submit" ng-click="saveArtist()" class="btn btn-primary">Save</button>
+﻿<h3>Edit artists:</h3>
+<form name="editArtists">
+    <div ui-grid="{ data: artists, enableCellEditOnFocus: true }" ui-grid-edit ui-grid-cellnav></div>
+    <button type="submit" ng-click="saveArtists()" class="btn btn-primary">Save</button>
 </form>

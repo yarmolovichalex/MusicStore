@@ -3,14 +3,14 @@
 
         $scope.artists = {};
 
-        var getArtists = function() {
+        let getArtists = function() {
             $http.get('/musicstore/home/getArtists')
                 .then(function(response) {
                     $scope.artists = response.data;
                 });
         }
 
-        var getAlbums = function() {
+        let getAlbums = function() {
             $http.get('/musicstore/home/getAlbums')
                 .then(function(response) {
                     $scope.albums = response.data;
