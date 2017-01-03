@@ -63,6 +63,7 @@
     <Compile Include="Business\ArtistService.cs" />
     <Compile Include="Business\IAlbumService.cs" />
     <Compile Include="Business\IArtistService.cs" />
+    <Compile Include="Common\IdentifiedValueObject.cs" />
     <Compile Include="Common\IRepository.cs" />
     <Compile Include="Common\Repository.cs" />
     <Compile Include="Common\Entity.cs" />

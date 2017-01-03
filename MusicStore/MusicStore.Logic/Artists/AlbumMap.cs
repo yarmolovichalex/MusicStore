@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using FluentNHibernate;
+using FluentNHibernate.Mapping;
 
 namespace MusicStore.Logic.Artists
 {
@@ -6,7 +7,7 @@ namespace MusicStore.Logic.Artists
     {
         public AlbumMap()
         {
-            Id(x => x.Id);
+            Id(Reveal.Member<Album>("Id"));
             Map(x => x.Name);
             Map(x => x.Year).Nullable();
 

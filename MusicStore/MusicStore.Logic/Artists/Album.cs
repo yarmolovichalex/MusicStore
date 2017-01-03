@@ -5,7 +5,7 @@ using MusicStore.Logic.DTOs.Track;
 
 namespace MusicStore.Logic.Artists
 {
-    public class Album : Entity
+    public class Album : IdentifiedValueObject<Album>
     {
         public virtual string Name { get; protected set; }
 
@@ -38,6 +38,22 @@ namespace MusicStore.Logic.Artists
             foreach (var track in tracks)
             {
                 _tracks.Add(new Track(track.Number, track.Name, this, track.Duration));
+            }
+        }
+
+        protected override bool EqualsCore(Album other)
+        {
+            return Artist == other.Artist && Name == other.Name;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + Artist.GetHashCode();
+                hash = hash * 23 + Name.GetHashCode();
+                return hash;
             }
         }
     }
