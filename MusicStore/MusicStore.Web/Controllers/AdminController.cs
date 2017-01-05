@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using MusicStore.Logic.Artists;
-using MusicStore.Logic.Business;
-using MusicStore.Logic.DTOs.Album;
-using MusicStore.Logic.DTOs.Artist;
-using MusicStore.Logic.DTOs.Track;
+using MusicStore.Logic.DTO.Album;
+using MusicStore.Logic.DTO.Artist;
+using MusicStore.Logic.DTO.Track;
+using MusicStore.Logic.Model.Artist;
 using MusicStore.Logic.Utils;
 using MusicStore.Web.Helpers;
 using MusicStore.Web.ViewModels.Admin;
@@ -15,12 +14,10 @@ namespace MusicStore.Web.Controllers
     public class AdminController : Controller
     {
         private readonly IArtistService _artistService;
-        private readonly IAlbumService _albumService;
 
-        public AdminController(IArtistService artistService, IAlbumService albumService)
+        public AdminController(IArtistService artistService)
         {
             _artistService = artistService;
-            _albumService = albumService;
         }
 
         [HttpGet]

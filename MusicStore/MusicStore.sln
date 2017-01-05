@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Logic", "MusicStore.Logic\MusicStore.Logic.csproj", "{8AA5B9EE-90CC-48B3-8A7E-2106B8DDAB34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Domain", "MusicStore.Logic\MusicStore.Domain.csproj", "{8AA5B9EE-90CC-48B3-8A7E-2106B8DDAB34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Tests", "MusicStore.Tests\MusicStore.Tests.csproj", "{06FB4651-AD72-4277-8FD9-D3A5E162377D}"
 EndProject

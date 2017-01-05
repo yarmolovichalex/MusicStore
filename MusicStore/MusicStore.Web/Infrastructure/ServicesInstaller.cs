@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using MusicStore.Logic.Business;
+using MusicStore.Logic.Model.Artist;
 
 namespace MusicStore.Web.Infrastructure
 {

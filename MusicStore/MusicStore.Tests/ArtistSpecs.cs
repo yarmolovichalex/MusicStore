@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentAssertions;
-using MusicStore.Logic.Artists;
-using MusicStore.Logic.SharedKernel;
+using MusicStore.Logic.Model.Artist;
+using MusicStore.Logic.Model.SharedKernel;
 using Xunit;
 
 namespace MusicStore.Tests

@@ -159,9 +159,9 @@
     <Folder Include="Scripts\home\services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MusicStore.Logic\MusicStore.Logic.csproj">
+    <ProjectReference Include="..\MusicStore.Logic\MusicStore.Domain.csproj">
       <Project>{8aa5b9ee-90cc-48b3-8a7e-2106b8ddab34}</Project>
-      <Name>MusicStore.Logic</Name>
+      <Name>MusicStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
