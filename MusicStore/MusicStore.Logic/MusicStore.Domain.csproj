@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\Album\AlbumsOfArtistDTO.cs" />
     <Compile Include="Model\Artist\Album.cs" />
     <Compile Include="Persistence\Artist\AlbumMap.cs" />
     <Compile Include="Model\Artist\Artist.cs" />

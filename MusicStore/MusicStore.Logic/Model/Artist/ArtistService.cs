@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using MusicStore.Logic.DTO.Album;
 using MusicStore.Logic.DTO.Artist;
 
 namespace MusicStore.Logic.Model.Artist
@@ -55,6 +57,12 @@ namespace MusicStore.Logic.Model.Artist
         public void Save(ICollection<Artist> artists)
         {
             _artistRepository.Save(artists);
+        }
+
+        public AlbumsOfArtistDTO GetAlbumsOfArtist(Guid artistId)
+        {
+            var data = _artistRepository.GetAlbumsOfArtistWithTracks(artistId);
+            return data;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MusicStore.Logic.DTO.Album;
 using MusicStore.Logic.DTO.Track;
@@ -27,30 +28,33 @@ namespace MusicStore.Logic.Persistence.Artist
             }
         }
 
-        public IList<AlbumDTO> GetAllAlbums()
+        public AlbumsOfArtistDTO GetAlbumsOfArtistWithTracks(Guid artistId)
         {
             using (ISession session = SessionFactory.OpenSession())
             {
-                var artists = session.Query<Model.Artist.Artist>().FetchMany(x => x.Albums).ThenFetchMany(y => y.Tracks).ToList();
+                var artist = session.Query<Model.Artist.Artist>().Where(x => x.Id == artistId).FetchMany(x => x.Albums).ThenFetchMany(x => x.Tracks).ToList().FirstOrDefault();
 
-                var result = new List<AlbumDTO>();
-                foreach (var artist in artists)
+                if (artist != null)
                 {
-                    result.AddRange(artist.Albums.Select(album => new AlbumDTO
+                    return new AlbumsOfArtistDTO
                     {
+                        ArtistId = artistId,
                         ArtistName = artist.Name,
-                        Name = album.Name,
-                        Year = album.Year,
-                        Tracks = album.Tracks.Select(y => new TrackDTO
+                        Albums = artist.Albums.Select(album => new AlbumDTO
                         {
-                            Number = y.Number,
-                            Name = y.Name,
-                            Duration = y.Duration
+                            Name = album.Name,
+                            Year = album.Year,
+                            Tracks = album.Tracks.Select(track => new TrackDTO
+                            {
+                                Number = track.Number,
+                                Name = track.Name,
+                                Duration = track.Duration
+                            })
                         })
-                    }));
+                    };
                 }
 
-                return result.ToList();
+                return null;
             }
         }
     }

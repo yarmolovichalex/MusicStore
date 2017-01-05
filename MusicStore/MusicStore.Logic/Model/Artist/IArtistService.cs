@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using MusicStore.Logic.DTO.Album;
 using MusicStore.Logic.DTO.Artist;
 
 namespace MusicStore.Logic.Model.Artist
@@ -9,5 +11,6 @@ namespace MusicStore.Logic.Model.Artist
         IEnumerable<ArtistDTO> GetAll();
         void Save(ICollection<EditArtistDTO> artists);
         void Save(ICollection<Artist> artists);
+        AlbumsOfArtistDTO GetAlbumsOfArtist(Guid artistId);
     }
 }

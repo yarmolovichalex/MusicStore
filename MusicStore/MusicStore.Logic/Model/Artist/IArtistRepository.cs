@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MusicStore.Logic.DTO.Album;
 using MusicStore.Logic.Model.Common;
 
@@ -8,6 +9,6 @@ namespace MusicStore.Logic.Model.Artist
     {
         Artist GetByName(string name);
         IList<Artist> GetAll();
-        IList<AlbumDTO> GetAllAlbums();
+        AlbumsOfArtistDTO GetAlbumsOfArtistWithTracks(Guid artistId);
     }
 }

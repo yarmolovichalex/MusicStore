@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using MusicStore.Logic.Model.Artist;
@@ -25,11 +26,41 @@ namespace MusicStore.Web.Controllers
         public ActionResult GetArtists()
         {
             var data = _artistService.GetAll();
-            return Json(data.Select(x => new ArtistVm
+            return Json(data.Select(x => new
             {
-                Name = x.Name,
-                Country = x.Country
+                x.Name,
+                x.Country
             }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetAlbumsOfArtist(Guid artistId)
+        {
+            var data = _artistService.GetAlbumsOfArtist(artistId);
+
+            var result = new
+            {
+                data.ArtistId,
+                data.ArtistName,
+                Albums = data.Albums.Select(x => new
+                {
+                    x.Name,
+                    x.Year,
+                    Price = new
+                    {
+                        Amount = 10m,
+                        Currency = "USD" // todo
+                    },
+                    Tracks = x.Tracks.Select(y => new
+                    {
+                        y.Number,
+                        y.Name,
+                        y.Duration
+                    })
+                })
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
