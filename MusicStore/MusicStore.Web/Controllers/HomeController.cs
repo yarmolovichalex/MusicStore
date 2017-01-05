@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using MusicStore.Logic.Model.Artist;
-using MusicStore.Web.ViewModels;
 
 namespace MusicStore.Web.Controllers
 {
@@ -28,6 +26,7 @@ namespace MusicStore.Web.Controllers
             var data = _artistService.GetAll();
             return Json(data.Select(x => new
             {
+                x.Id,
                 x.Name,
                 x.Country
             }), JsonRequestBehavior.AllowGet);

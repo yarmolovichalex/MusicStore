@@ -1,50 +1,49 @@
-﻿<h3>Albums</h3>
-
-<table class="table table-hover">
-    <thead>
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{$ctrl.data.ArtistName}} Albums</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <table class="table table-hover">
+        <thead>
         <tr>
             <th>#</th>
-            <th>Artist</th>
             <th>Name</th>
             <th>Year</th>
             <th>Price</th>
         </tr>
-    </thead>
-    <tbody ng-repeat="album in albums | orderBy: 'Year'">
-        <tr ng-click="expandTableRow($index)">
+        </thead>
+        <tbody ng-repeat="album in $ctrl.data.Albums | orderBy: 'Year'">
+        <tr>
             <td class="col-md-1" ng-bind="$index + 1"></td>
-            <td class="col-md-3" ng-bind="album.ArtistName"></td>
-            <td class="col-md-6" ng-bind="album.Name"></td>
-            <td class="col-md-1" ng-bind="album.Year"></td>
-            <td class="col-md-1" ng-bind="album.Price.Amount + album.Price.Currency"></td>
+            <td class="col-md-4" ng-bind="album.Name"></td>
+            <td class="col-md-5" ng-bind="album.Year"></td>
+            <td class="col-md-2" ng-bind="album.Price.Amount + album.Price.Currency"></td>
         </tr>
-        <tr ng-class="rowExpand[$index] ? 'collapse-row' : 'expand-row'">
+        <tr>
             <td colspan="1"></td>
             <td colspan="1">
-                <div uib-collapse="rowExpand[$index]">
-                    <img class="img-responsive" src="https://lastfm-img2.akamaized.net/i/u/770x0/07f492a00c904cc6ccf868010be4d5a6.jpg" />
-                </div>
+                <img class="img-responsive" src="https://lastfm-img2.akamaized.net/i/u/770x0/07f492a00c904cc6ccf868010be4d5a6.jpg"/>
             </td>
             <td colspan="10">
-                <div uib-collapse="rowExpand[$index]">
+                <div>
                     <table class="table table-condensed">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Duration</th>
-                            </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Duration</th>
+                        </tr>
                         </thead>
                         <tbody ng-repeat="track in album.Tracks | orderBy: 'Number'">
-                            <tr>
-                                <td ng-bind="track.Number"></td>
-                                <td ng-bind="track.Name"></td>
-                                <td ng-bind="track.Duration | secondsToDateTime | date: 'm:ss'"></td>
-                            </tr>
+                        <tr>
+                            <td ng-bind="track.Number"></td>
+                            <td ng-bind="track.Name"></td>
+                            <td ng-bind="track.Duration | secondsToDateTime | date: 'm:ss'"></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

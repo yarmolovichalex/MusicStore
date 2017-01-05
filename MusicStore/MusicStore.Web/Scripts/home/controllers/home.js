@@ -1,5 +1,7 @@
 ﻿export default [
-    '$scope', '$http', '$location', function($scope, $http, $location) {
+    '$scope', '$http', '$uibModal', function($scope, $http, $uibModal) {
+
+        let $ctrl = this;
 
         $scope.artists = {};
 
@@ -10,55 +12,25 @@
                 });
         }
 
-        let getAlbums = function() {
-            $http.get('/musicstore/home/getAlbums')
+        getArtists();
+
+        $ctrl.showAlbums = function(artistId) {
+            $http.get('/musicstore/home/getAlbumsOfArtist?artistId=' + artistId)
                 .then(function(response) {
-                    $scope.albums = response.data;
-                   
-                    $scope.rowExpand = [];
-                    for (var i = 0; i < $scope.albums.length; i++) {
-                        $scope.rowExpand.push(true);
-                    }
+                    $uibModal.open({
+                        animation: true,
+                        ariaLabelledBy: 'modal-title',
+                        ariaDescribedBy: 'modal-body',
+                        templateUrl: '../Scripts/home/templates/albumList.html',
+                        controller: 'AlbumListController',
+                        controllerAs: '$ctrl',
+                        resolve: {
+                            data: function() {
+                                return response.data;
+                            }
+                        }
+                    }).result.catch(function() {});
                 });
         }
-
-        if ($scope.selectedTab === 'ArtistList') {
-            getArtists();
-        } else if ($scope.selectedTab === 'AlbumList') {
-            getAlbums();
-        }
-
-        $scope.changeTab = function(tab) {
-            $scope.selectedTab = tab;
-            switch ($scope.selectedTab) {
-            case 'ArtistList':
-                $location.path('/artistList');
-                break;
-            case 'AlbumList':
-                $location.path('/albumList');
-                break;
-            default:
-                $location.path('/artistList');
-            }
-        }
-
-        $scope.$watch(function() {
-            return $location.path();
-        }, function(value) {
-            switch (value) {
-            case '/artistList':
-                $scope.selectedTab = 'ArtistList';
-                break;
-            case '/albumList':
-                $scope.selectedTab = 'AlbumList';
-                break;
-            default:
-                $scope.selectedTab = 'ArtistList';
-            }
-        });
-
-        $scope.expandTableRow = function (index) {
-            $scope.rowExpand[index] = !$scope.rowExpand[index];
-        };
     }
 ];
