@@ -101,6 +101,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\admin\app.js" />
     <Content Include="Scripts\home\app.js" />
+    <Content Include="Scripts\home\controllers\albumList.js" />
     <Content Include="Scripts\home\controllers\index.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\admin\controllers\admin.js" />
