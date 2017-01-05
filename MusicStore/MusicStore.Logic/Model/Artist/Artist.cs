@@ -31,7 +31,7 @@ namespace MusicStore.Logic.Model.Artist
 
         public virtual void AddAlbum(AddAlbumDTO dto)
         {
-            var album = new Album(dto.Name, this, dto.Year);
+            var album = new Album(dto.Name, this, dto.Year, dto.CoverUrl);
             if (dto.Tracks != null)
             {
                 album.AddTracks(dto.Tracks);

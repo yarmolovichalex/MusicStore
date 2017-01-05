@@ -13,6 +13,8 @@ namespace MusicStore.Logic.Model.Artist
 
         public virtual int? Year { get; protected set; }
 
+        public virtual string CoverUrl { get; set; }
+
         private readonly ICollection<Track> _tracks; 
         public virtual IEnumerable<Track> Tracks => _tracks;
 
@@ -20,7 +22,7 @@ namespace MusicStore.Logic.Model.Artist
         {
         }
 
-        public Album(string name, Artist artist, int? year)
+        public Album(string name, Artist artist, int? year, string coverUrl)
         {
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException();
@@ -30,6 +32,7 @@ namespace MusicStore.Logic.Model.Artist
             Name = name;
             Artist = artist;
             Year = year;
+            CoverUrl = coverUrl;
             _tracks = new List<Track>();
         }
 

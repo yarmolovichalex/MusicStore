@@ -11,6 +11,7 @@ namespace MusicStore.Logic.Persistence.Artist
             Id(Reveal.Member<Album>("Id"));
             Map(x => x.Name);
             Map(x => x.Year).Nullable();
+            Map(x => x.CoverUrl).Nullable();
 
             References(x => x.Artist);
 

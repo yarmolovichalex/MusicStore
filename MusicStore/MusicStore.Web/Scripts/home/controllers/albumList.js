@@ -1,5 +1,5 @@
 ﻿export default [
-    '$scope', '$uibModalInstance', 'data', function($scope, $uibModalInstance, data) {
+    'data', function(data) {
         this.data = data;
     }
 ];

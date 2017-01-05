@@ -8,6 +8,7 @@ namespace MusicStore.Logic.DTO.Album
     {
         public string Name { get; set; }
         public int? Year { get; set; }
+        public string CoverUrl { get; set; }
         public MoneyDTO Price { get; set; }
         public IEnumerable<TrackDTO> Tracks { get; set; }
     }

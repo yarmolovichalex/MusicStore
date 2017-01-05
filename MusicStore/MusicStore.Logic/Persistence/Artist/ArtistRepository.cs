@@ -44,6 +44,7 @@ namespace MusicStore.Logic.Persistence.Artist
                         {
                             Name = album.Name,
                             Year = album.Year,
+                            CoverUrl = album.CoverUrl,
                             Tracks = album.Tracks.Select(track => new TrackDTO
                             {
                                 Number = track.Number,

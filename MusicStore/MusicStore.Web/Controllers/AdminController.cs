@@ -73,6 +73,7 @@ namespace MusicStore.Web.Controllers
             {
                 Name = "Master Of Puppets",
                 Year = 1986,
+                CoverUrl = "https://lastfm-img2.akamaized.net/i/u/770x0/07f492a00c904cc6ccf868010be4d5a6.jpg",
                 Tracks = new List<AddTrackDTO>
                 {
                     new AddTrackDTO { Number = 1, Name = "Battery", Duration = DateHelper.GetSeconds(5, 13) },
@@ -90,6 +91,7 @@ namespace MusicStore.Web.Controllers
             {
                 Name = "Metallica",
                 Year = 1991,
+                CoverUrl = "https://lastfm-img2.akamaized.net/i/u/770x0/42073c53961041e0b028da2f157402b6.jpg",
                 Tracks = new List<AddTrackDTO>
                 {
                     new AddTrackDTO { Number = 1, Name = "Enter Sandman", Duration = DateHelper.GetSeconds(5, 32) },

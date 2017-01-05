@@ -45,6 +45,7 @@ namespace MusicStore.Web.Controllers
                 {
                     x.Name,
                     x.Year,
+                    x.CoverUrl,
                     Price = new
                     {
                         Amount = 10m,
